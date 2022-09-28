@@ -1,0 +1,64 @@
+.nurse_register {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+}
+
+.nurses_gang,
+.nurses_reg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nurses_gang img {
+  width: 100%;
+  height: 230px;
+  background-image: no-repeat;
+  background-position: center;
+  background-size: cover;
+  mix-blend-mode: multiply;
+}
+
+.mobile-field {
+  display: flex;
+  align-items: flex-start;
+}
+
+.signup-btn {
+  margin: auto;
+}
+
+.sign-up {
+  background-color: #389df0;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  padding: 15px;
+  font-size: 0.7em;
+  cursor: pointer;
+}
+
+.sign-up:hover {
+  background-color: #64aeea;
+}
+
+#mobile {
+  width: 320px;
+}
+
+#codes {
+  margin-right: 10px;
+  margin-top: -2px;
+}
+
+.fa-solid,
+.fas {
+  color: #6d8395;
+}
