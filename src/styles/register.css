@@ -7,6 +7,12 @@
   border-radius: 0;
 }
 
+#username,
+#password,
+.rform {
+  padding: 0 0 0;
+}
+
 .nurses_gang,
 .nurses_reg {
   width: 100%;
@@ -25,9 +31,32 @@
   mix-blend-mode: multiply;
 }
 
+.inputContainer{
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.instructions
+{
+  font-size: 10px;
+  position: absolute;
+  /* display: inline-block; */
+  border-bottom: 1px dotted black;
+  visibility: visible;
+  width: 90%;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 0 0;
+  border-radius: 6px;
+  z-index: 1;
+}
+
 .mobile-field {
   display: flex;
   align-items: flex-start;
+  width: 100%;
 }
 
 .signup-btn {
@@ -50,15 +79,28 @@
 }
 
 #mobile {
-  width: 320px;
+  width: 192px;
 }
 
 #codes {
-  margin-right: 10px;
-  margin-top: -2px;
+  font-size: 15px;
+  width: 23%;
+  margin-right: 5px;
+  margin-top: 10px;
 }
 
 .fa-solid,
 .fas {
   color: #6d8395;
+}
+
+.aa {
+  color: #389df0;
+  text-align: center;
+}
+
+.line {
+  margin: auto;
+  color: #389df0;
+  text-align: center;
 }

@@ -31,9 +31,9 @@ const Register = () => {
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
-  const [matchPwd, setMatchPwd] = useState("");
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
+  //const [matchPwd, setMatchPwd] = useState("");
+  //const [validMatch, setValidMatch] = useState(false);
+  //const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
@@ -48,8 +48,8 @@ const Register = () => {
 
   useEffect(() => {
     setValidPwd(PWD_REGEX.test(password));
-    setValidMatch(password === matchPwd);
-  }, [password, matchPwd]);
+    // setValidMatch(password === matchPwd);
+  }, [password]);
 
   useEffect(() => {
     setValidMobile(MOBILE_REGEX.test(mobile_no));
@@ -57,16 +57,16 @@ const Register = () => {
 
   useEffect(() => {
     setErrMsg("");
-  }, [email, password, matchPwd]);
+  }, [email, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // if button enabled with JS hack
     const v1 = EMAIL_REGEX.test(email);
-    const v2 = PWD_REGEX.test(password);
+    // const v2 = PWD_REGEX.test(password);
     const v3 = MOBILE_REGEX.test(mobile_no);
 
-    if (!v1 || !v2 || !v3) {
+    if (!v1 || !v3) {
       setErrMsg("Invalid Entry");
       return;
     }
@@ -86,7 +86,7 @@ const Register = () => {
       //clear state and controlled inputs
       setEmail("");
       setPwd("");
-      setMatchPwd("");
+      //setMatchPwd("");
       setMobile("");
     } catch (err) {
       if (!err?.response) {
@@ -123,7 +123,7 @@ const Register = () => {
               {errMsg}
             </p>
             <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="rform">
               <label htmlFor="username">
                 <FontAwesomeIcon
                   icon={faCheck}
@@ -134,8 +134,8 @@ const Register = () => {
                   className={validEmail || !email ? "hide" : "invalid"}
                 />
               </label>
-              <div>
-                <i class="fa-solid fa-user"></i>
+              <div className="inputContainer">
+                {/* <i class="fa-solid fa-user"></i> */}
                 <input
                   type="text"
                   id="username"
@@ -149,7 +149,6 @@ const Register = () => {
                   onFocus={() => setEmailFocus(true)}
                   onBlur={() => setEmailFocus(false)}
                 />
-              </div>
 
               <p
                 id="uidnote"
@@ -159,6 +158,7 @@ const Register = () => {
                     : "offscreen"
                 }
               >
+              
                 <FontAwesomeIcon icon={faInfoCircle} />
                 4 to 24 characters.
                 <br />
@@ -166,7 +166,7 @@ const Register = () => {
                 <br />
                 Letters, numbers, underscores, hyphens allowed.
               </p>
-
+              </div>
               <label htmlFor="password">
                 <FontAwesomeIcon
                   icon={faCheck}
@@ -177,9 +177,10 @@ const Register = () => {
                   className={validPwd || !password ? "hide" : "invalid"}
                 />
               </label>
-              <div>
-                <i class="fa-solid fa-lock"></i>
+              <div className="inputContainer">
+                {/* <i class="fa-solid fa-lock"></i> */}
                 <input
+                  className="password"
                   type="password"
                   id="password"
                   onChange={(e) => setPwd(e.target.value)}
@@ -190,7 +191,6 @@ const Register = () => {
                   onFocus={() => setPwdFocus(true)}
                   onBlur={() => setPwdFocus(false)}
                 />
-              </div>
               <p
                 id="pwdnote"
                 className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
@@ -208,8 +208,8 @@ const Register = () => {
                 <span aria-label="dollar sign">$</span>{" "}
                 <span aria-label="percent">%</span>
               </p>
-
-              <label htmlFor="confirm_pwd">
+              </div>
+              {/* <label htmlFor="confirm_pwd">
                 <FontAwesomeIcon
                   icon={faCheck}
                   className={validMatch && matchPwd ? "valid" : "hide"}
@@ -232,17 +232,17 @@ const Register = () => {
                   onFocus={() => setMatchFocus(true)}
                   onBlur={() => setMatchFocus(false)}
                 />
-              </div>
+              </div> */}
 
-              <p
+              {/* <p
                 id="confirmnote"
                 className={
                   matchFocus && !validMatch ? "instructions" : "offscreen"
                 }
-              >
-                <FontAwesomeIcon icon={faInfoCircle} />
+              > */}
+                {/* <FontAwesomeIcon icon={faInfoCircle} />
                 Must match the first password input field.
-              </p>
+              </p> */}
 
               <label htmlFor="mobile_no">
                 <FontAwesomeIcon
@@ -255,7 +255,7 @@ const Register = () => {
                 />
               </label>
               <div className="mobile-field">
-                <i class="fa-solid fa-mobile"></i>
+                {/* <i class="fa-solid fa-mobile"></i> */}
                 <select name="codes" id="codes" required>
                   <option value="india">+91</option>
                   <option value="usa">+1</option>
@@ -276,18 +276,19 @@ const Register = () => {
                 <button
                   className="sign-up"
                   disabled={
-                    !validEmail || !validPwd || !validMatch ? true : false
+                    !validEmail || !validPwd  ? true : false
                   }
                 >
                   Sign Up
                 </button>
               </div>
             </form>
-            <p>
+            <br/><br/><br/>
+            <p className="aa">
               Already registered?
-              <br />
-              <span className="line">
-                <button>Sign In</button>
+              <br/>
+              <span className="line" >
+               <Link to="/login">Login</Link>
               </span>
             </p>
           </div>

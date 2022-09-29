@@ -39,7 +39,7 @@ textarea {
   padding-left: 20px;
   font-size: 22px;
   height: 2.4rem;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   border: 2px solid #595959;
   outline: none;
   width: 260px;
@@ -59,14 +59,14 @@ select {
 
 label,
 button {
-  margin-top: 2rem;
-}
+  /* margin-top: 2rem; */
+} 
 
 li {
   list-style-type: none;
 }
 
-.instructions {
+/* .instructions {
   font-size: 0.75rem;
   border-radius: 0.5rem;
   background: #000;
@@ -74,11 +74,11 @@ li {
   padding: 0.25rem;
   position: relative;
   bottom: -10px;
-}
+} */
 
-.instructions > svg {
+/* .instructions > svg {
   margin-right: 0.25rem;
-}
+} */
 
 .offscreen {
   position: absolute;
@@ -86,7 +86,7 @@ li {
 }
 
 .hide {
-  display: none;
+  visibility: hidden;
 }
 
 .valid {
