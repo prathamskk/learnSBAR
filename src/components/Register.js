@@ -135,7 +135,6 @@ const Register = () => {
                 />
               </label>
               <div>
-                <i class="fa-solid fa-user"></i>
                 <input
                   type="text"
                   id="username"
@@ -178,7 +177,6 @@ const Register = () => {
                 />
               </label>
               <div>
-                <i class="fa-solid fa-lock"></i>
                 <input
                   type="password"
                   id="password"
