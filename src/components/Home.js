@@ -1,4 +1,3 @@
-
 import MicRecorder from "mic-recorder-to-mp3";
 import React from "react";
 import axios from "axios";
@@ -66,10 +65,13 @@ class Home extends React.Component {
     let fileName = ev.name;
     let fileType = ev.type;
     axios
-      .post("http://localhost:5000/sign_s3", {
-        fileName: fileName,
-        fileType: fileType,
-      })
+      .post(
+        "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/sign-s3",
+        {
+          fileName: fileName,
+          fileType: fileType,
+        }
+      )
       .then((response) => {
         var returnData = response.data.data.returnData;
         var signedRequest = returnData.signedRequest;
@@ -95,7 +97,7 @@ class Home extends React.Component {
   }
 
   render() {
-    return (  
+    return (
       <>
         <button
           onClick={this.start}
