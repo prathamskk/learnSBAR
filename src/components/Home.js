@@ -1,140 +1,116 @@
-import { useNavigate, Link } from "react-router-dom";
-import useLogout from "../hooks/useLogout";
-import AWS from "aws-sdk";
-import MicRecorder from "mic-recorder-to-mp3";
-import { useState, useEffect } from "react";
-import { createRef } from "react";
 
+import MicRecorder from "mic-recorder-to-mp3";
+import React from "react";
+import axios from "axios";
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
-const S3_BUCKET = "YOUR_BUCKET_NAME_HERE";
-const REGION = "YOUR_DESIRED_REGION_HERE";
-
-AWS.config.update({
-  accessKeyId: "YOUR_ACCESS_KEY_HERE",
-  secretAccessKey: "YOUR_SECRET_ACCESS_KEY_HERE",
-});
-
-const myBucket = new AWS.S3({
-  params: { Bucket: S3_BUCKET },
-  region: REGION,
-});
-
-const Home = () => {
-  let recorderRef = createRef();
-  const [audioUrl, setAudioUrl] = useState("");
-  const [audio] = useState(new Audio());
-  const [blobAudio, setBlobAudio] = useState(null);
-  const navigate = useNavigate();
-  const logout = useLogout();
-  const [progress, setProgress] = useState(0);
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileInput = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
-
-  const uploadFile = (file) => {
-    const params = {
-      ACL: "public-read",
-      Body: file,
-      Bucket: S3_BUCKET,
-      Key: file.name,
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isblocked: false,
+      blobUrl: "",
+      isrecording: false,
+      audio: "",
     };
-
-    myBucket
-      .putObject(params)
-      .on("httpUploadProgress", (evt) => {
-        setProgress(Math.round((evt.loaded / evt.total) * 100));
-      })
-      .send((err) => {
-        if (err) console.log(err);
-      });
-  };
-
-  async function startRecord() {
-    console.log("START RECORD AUDIO");
-    if (navigator?.mediaDevices) {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: true,
-        });
-
-        recorderRef.current = new MediaRecorder(stream);
-
-        recorderRef.current.addEventListener(
-          "dataavailable",
-          onRecordingFinish
-        );
-
-        recorderRef.current.start();
-      } catch (error) {
-        console.error("getUserMedia failed:", error.name);
+    this.start = this.start.bind(this);
+    this.stop = this.stop.bind(this);
+    this.handleaudiofile = this.handleaudiofile.bind(this);
+  }
+  componentDidUpdate() {
+    navigator.getUserMedia(
+      { audio: true, video: false },
+      () => {
+        console.log("Permission Granted");
+        this.setState({ isblocked: false });
+      },
+      () => {
+        console.log("Permission Denied");
+        this.setState({ isblocked: true });
       }
+    );
+  }
+
+  start = () => {
+    if (this.state.isblocked) {
+      console.log("permission Denied");
+    } else {
+      audioRecorder
+        .start()
+        .then(() => {
+          this.setState({
+            isrecording: true,
+          });
+        })
+        .catch((e) => console.log(e));
     }
-  }
-
-  function stopRecord() {
-    recorderRef.current.stop();
-  }
-
-  async function onRecordingFinish(event) {
-    console.log("RECORDING AUDIO COMPLETE");
-    const audioChunks = [];
-    audioChunks.push(event.data);
-    const blob = new Blob(audioChunks, { type: "audio/mp3" });
-    setBlobAudio(blob);
-    const blob_stream = blob.stream();
-    console.log("AUDIO blob", blob);
-    console.log("AUDIO ReadableStream", blob_stream);
-
-    const audioURL = URL.createObjectURL(blob);
-    setAudioUrl(audioURL);
-    console.log(audioURL);
-
-    listenAudioRecorded();
-  }
-
-  async function listenAudioRecorded() {
-    audio.src = audioUrl;
-    await audio.play();
-  }
-
-  const signOut = async () => {
-    await logout();
-    navigate("/linkpage");
   };
 
-  return (
-    <section>
-      <h1>Home</h1>
-      <br />
-      <p>You are logged in!</p>
-      <br />
-      {/* <Link to="/editor">Go to the Editor page</Link> */}
-      <br />
-      <Link to="/admin">Go to the Admin page</Link>
-      <br />
-      {/* <Link to="/lounge">Go to the Lounge</Link> */}
-      <br />
-      <Link to="/linkpage">Go to the link page</Link>
-      <div className="flexGrow">
-        <button onClick={signOut}>Sign Out</button>
-      </div>
-      <p>Record audio and upload to AWS S3 with React.js</p>
-      <button onClick={startRecord}>Start record</button>
-      <br />
-      <button onClick={stopRecord}>Stop record</button>
-      <br />
-      <button onClick={listenAudioRecorded}>Listen audio</button>
+  stop = () => {
+    audioRecorder
+      .stop()
+      .getMp3()
+      .then(([buffer, blob]) => {
+        const blobUrl = URL.createObjectURL(blob);
+        this.setState({ blobUrl, isrecording: true });
+        var d = new Date();
+        var file = new File([blob], d.valueOf(), { type: "audio/wav" });
+        console.log(file);
+        this.handleaudiofile(file);
+      })
+      .catch((e) => console.log("We could not retrieve your message"));
+  };
 
-      <div>
-        <div>Native SDK File Upload Progress is {progress}%</div>
-        <input type="file" onChange={handleFileInput} />
-        <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
-      </div>
-    </section>
-  );
-};
+  handleaudiofile(ev) {
+    let file = ev;
+    let fileName = ev.name;
+    let fileType = ev.type;
+    axios
+      .post("http://localhost:5000/sign_s3", {
+        fileName: fileName,
+        fileType: fileType,
+      })
+      .then((response) => {
+        var returnData = response.data.data.returnData;
+        var signedRequest = returnData.signedRequest;
+        var url = returnData.url;
+        var options = {
+          headers: {
+            "Content-Type": fileType,
+          },
+        };
+        axios
+          .put(signedRequest, file, options)
+          .then((result) => {
+            this.setState({ audio: url }, () => console.log(this.state.audio));
+            alert("audio uploaded");
+          })
+          .catch((error) => {
+            alert("ERROR " + JSON.stringify(error));
+          });
+      })
+      .catch((error) => {
+        alert(JSON.stringify(error));
+      });
+  }
+
+  render() {
+    return (  
+      <>
+        <button
+          onClick={this.start}
+          disabled={this.state.isrecording}
+          type="button"
+        >
+          Start
+        </button>
+        <button onClick={this.stop} type="button">
+          Stop
+        </button>
+        <audio src={this.state.blobUrl} controls="controls" />
+      </>
+    );
+  }
+}
 
 export default Home;
