@@ -14,7 +14,7 @@
 .Main{
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 30px;
 }
 .title{
     flex-grow: 3 ;
@@ -40,6 +40,13 @@
     display: grid;
     text-align: center;
     grid-row-gap: 50px;
+}
+.info{
+    text-align: center;
+    color: white;
+    background-color: #588AD6;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
 }
 .card{
     display: flex;
@@ -78,5 +85,7 @@
 }
 .layout{
     text-align: center;
-    background-color:brown;
+    font-weight: 1000;
+    color: #FF5353;
+    background-color:#D9D9D9;
 }

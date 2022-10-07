@@ -121,6 +121,10 @@ class Home extends React.Component {
             <i className="fa fa-user fa-sm" aria-hidden="true"></i>
           </div>
         </header>
+        <div className="info">
+        Read how SBAR can ease the
+communication transfer
+        </div>
         <div className="container">
           <div className="card">
             {/* <div> */}
