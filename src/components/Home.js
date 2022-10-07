@@ -2,6 +2,7 @@ import MicRecorder from "mic-recorder-to-mp3";
 import React from "react";
 import axios from "axios";
 import "../styles/homepage.css";
+import s1logo from "../images/scic1.svg";
 
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
@@ -100,7 +101,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="format">
         <button
           onClick={this.start}
           disabled={this.state.isrecording}
@@ -112,29 +113,68 @@ class Home extends React.Component {
           Stop
         </button>
         <audio src={this.state.blobUrl} controls="controls" />
-        <header class="heading">
-          <div class="title">learnSBAR</div>
-          <div class="icon">icon</div>
+        <div className="Main">
+        <header className="heading">
+          <div className="title"><span className="fi">learn</span><span className="se">SBAR</span></div>
+          <div className="icon">
+            {/* icon */}
+            <i className="fa fa-user fa-sm" aria-hidden="true"></i>
+          </div>
         </header>
-        <div class="container">
-          <div class="card">
-              <div class="gitem">Scenario 1</div>
-              <div class="gitem layout">Pass</div>
+        <div className="container">
+          <div className="card">
+            {/* <div> */}
+              <img src={s1logo} class="s1"></img>
+            {/* </div> */}
+            <div className="sch">
+              <h3 className="schead">
+                Scenario 1
+              </h3>
+              <div className="scpara">This scenario describes about the patient’s
+sufferings she is currently going through.</div>
+            </div>
+            <div className="gitem layout">Pass</div>
           </div>
-            <div class="card">
-            <div class="gitem">Scenario 2</div>
-            <div class="gitem layout">Pending</div>
+          <div className="card">
+            {/* <div> */}
+              <img src={s1logo} class="s1"></img>
+            {/* </div> */}
+            <div className="sch">
+              <h3 className="schead">
+                Scenario 2
+              </h3>
+              <div className="scpara">.</div>
+            </div>
+            <div className="gitem layout">Pass</div>
           </div>
-          <div class="card">
-             <div class="gitem">Scenario 3</div>
-            <div class="gitem layout">Pending</div>
+          <div className="card">
+            {/* <div> */}
+              <img src={s1logo} class="s1"></img>
+            {/* </div> */}
+            <div className="sch">
+              <h3 className="schead">
+                Scenario 3
+              </h3>
+              <div className="scpara">.</div>
+            </div>
+            <div className="gitem layout">Pass</div>
           </div>
-          <div class="card">
-           <div class="gitem">Scenario 4</div>
-           <div class="gitem layout">Pass</div>
+          <div className="card">
+            {/* <div> */}
+              <img src={s1logo} class="s1"></img>
+            {/* </div> */}
+            <div className="sch">
+              <h3 className="schead">
+                Scenario 4
+              </h3>
+              <div className="scpara">.</div>
+            </div>
+            <div className="gitem layout">Pass</div>
           </div>
+
         </div>
-      </>
+        </div>
+      </div>
     );
   }
 }
