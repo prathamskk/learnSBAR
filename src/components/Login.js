@@ -97,7 +97,7 @@ const Login = () => {
             id="email"
             ref={emailRef}
             autoComplete="off"
-            placeholder="Enter email"
+            placeholder="Enter your E-mail"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             required

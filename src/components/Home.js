@@ -1,6 +1,8 @@
 import MicRecorder from "mic-recorder-to-mp3";
 import React from "react";
 import axios from "axios";
+import "../styles/homepage.css";
+
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
 class Home extends React.Component {
@@ -110,6 +112,28 @@ class Home extends React.Component {
           Stop
         </button>
         <audio src={this.state.blobUrl} controls="controls" />
+        <header class="heading">
+          <div class="title">learnSBAR</div>
+          <div class="icon">icon</div>
+        </header>
+        <div class="container">
+          <div class="card">
+              <div class="gitem">Scenario 1</div>
+              <div class="gitem layout">Pass</div>
+          </div>
+            <div class="card">
+            <div class="gitem">Scenario 2</div>
+            <div class="gitem layout">Pending</div>
+          </div>
+          <div class="card">
+             <div class="gitem">Scenario 3</div>
+            <div class="gitem layout">Pending</div>
+          </div>
+          <div class="card">
+           <div class="gitem">Scenario 4</div>
+           <div class="gitem layout">Pass</div>
+          </div>
+        </div>
       </>
     );
   }

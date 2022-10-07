@@ -33,3 +33,122 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+html {
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  color: #fff;
+}
+
+body {
+  min-height: 100vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+  font-size: 1.5em;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  padding-left:0px;
+  font-size: 22px;
+  height: 2.4rem;
+  /* margin-top: 20px; */
+  border: 2px solid #595959;
+  outline: none;
+  width: 260px;
+  border-radius: 6px;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+  font-family: "Karla", sans-serif;
+}
+
+select {
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  padding: 0.25rem;
+  border: none;
+  border-bottom: 2px solid #7c91a5;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+label,
+button {
+  /* margin-top: 2rem; */
+} 
+
+li {
+  list-style-type: none;
+}
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
+}
+
+.flexGrow {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.persistCheck {
+  font-size: 0.75rem;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.persistCheck label {
+  margin: 0;
+}
+
+[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+  margin: 0 5px 2px 2px;
+}

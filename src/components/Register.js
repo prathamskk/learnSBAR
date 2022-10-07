@@ -139,6 +139,7 @@ const Register = () => {
                 <input
                   type="text"
                   id="username"
+                  placeholder="Enter your username"   
                   ref={userRef}
                   autoComplete="off"
                   onChange={(e) => setEmail(e.target.value)}
@@ -183,6 +184,7 @@ const Register = () => {
                   className="password"
                   type="password"
                   id="password"
+                  placeholder="Enter your password"  
                   onChange={(e) => setPwd(e.target.value)}
                   value={password}
                   required
