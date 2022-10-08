@@ -85,7 +85,10 @@ const Main = () => {
               .post(
                 "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/submission",
                 {
-                  url: url,
+                  scenarioNo: "1",
+                  attemptNo: "1",
+                  type: "rec1",
+                  data: url
                 }
               )
               .then((response) => {
