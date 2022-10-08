@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../styles/login.css";
 import nurses from "../images/nurses_register.png";
 import logo from "../images/LearnSBAR (2) 2.png";
+import Spinner from "./Spinner";
 
 import axios from "../api/axios";
 const LOGIN_URL = "/auth";
@@ -22,6 +23,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
 
+  const [loggedInState, setLoggedInState] = useState("");
+
   useEffect(() => {
     emailRef.current.focus();
   }, []);
@@ -34,6 +37,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoggedInState("logging in");
 
     try {
       const response = await axios.post(
@@ -76,6 +80,7 @@ const Login = () => {
 
   return (
     <section className="nurse_login">
+      {loggedInState === "logging in" ? <Spinner /> : ""}
       <div className="nurse_img">
         <img src={nurses} alt="nurses" />
       </div>
