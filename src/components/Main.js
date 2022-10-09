@@ -87,8 +87,8 @@ const Main = () => {
                 {
                   scenarioNo: "1",
                   attemptNo: "1",
-                  type: "rec1",
-                  data: url
+                  type: "rec2",
+                  data: url,
                 }
               )
               .then((response) => {
@@ -106,7 +106,18 @@ const Main = () => {
         alert(JSON.stringify(error));
       });
   };
-
+  const getScenario = () => {
+    axiosPrivate
+      .get(
+        "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/submission"
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        alert("ERROR " + JSON.stringify(error));
+      });
+  };
   return (
     <>
       <button onClick={start} disabled={isrecording} type="button">
@@ -116,6 +127,10 @@ const Main = () => {
         Stop
       </button>
       <audio src={blobUrl} controls="controls" />
+
+      <button onClick={getScenario} type="button">
+        GET SCENARIO LIST
+      </button>
     </>
   );
 };

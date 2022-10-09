@@ -82,42 +82,45 @@ const Login = () => {
     <section className="nurse_login">
       {loggedInState === "logging in" ? <Spinner /> : ""}
       <div className="nurse_img">
-        <img src={nurses} alt="nurses" />
+         <img src={nurses} alt="nurses"  />
       </div>
-      <div className="logo">
-        <img src={logo} alt="learnSBAR" />
-      </div>
-      <div>
-        <p
-          ref={errRef}
-          className={errMsg ? "errmsg" : "offscreen"}
-          aria-live="assertive"
-        >
-          {errMsg}
-        </p>
-        <h1>Sign In</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            id="email"
-            ref={emailRef}
-            autoComplete="off"
-            placeholder="Enter your E-mail"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            required
-          />
+     
+      <div className="login-wrapper">
+        <div className="logo">
+          <img src={logo} alt="learnSBAR" />
+        </div>
+        <div>
+          <p
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+          >
+            {errMsg}
+          </p>
+          <h1>Sign In</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              id="email"
+              ref={emailRef}
+              autoComplete="off"
+              placeholder="Enter your E-mail"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              required
+            />
 
-          <input
-            type="password"
-            // id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            placeholder="Enter password"
-            required
-          />
-          <button className="login">Login</button>
-        </form>
+            <input
+              type="password"
+              // id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              placeholder="Enter password"
+              required
+            />
+            <button className="login">Login</button>
+          </form>
+        </div>
       </div>
     </section>
   );
