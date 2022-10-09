@@ -1,21 +1,18 @@
 import { useRef, useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/login.css";
 import nurses from "../images/nurses_register.png";
 import logo from "../images/LearnSBAR (2) 2.png";
 import Spinner from "./Spinner";
-
 import axios from "../api/axios";
 const LOGIN_URL = "/auth";
 
 const Login = () => {
   const { setAuth, persist, setPersist } = useAuth();
-
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  // email
   const emailRef = useRef();
   const errRef = useRef();
 
@@ -49,12 +46,12 @@ const Login = () => {
         }
       );
       console.log(JSON.stringify(response?.data));
-      //console.log(JSON.stringify(response));
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
       setAuth({ email, password, roles, accessToken });
       setEmail("");
       setPassword("");
+
       navigate(from, { replace: true });
     } catch (err) {
       setLoggedInState("");
@@ -83,9 +80,9 @@ const Login = () => {
     <section className="nurse_login">
       {loggedInState === "logging in" ? <Spinner /> : ""}
       <div className="nurse_img">
-         <img src={nurses} alt="nurses"  />
+        <img src={nurses} alt="nurses" />
       </div>
-     
+
       <div className="login-wrapper">
         <div className="logo">
           <img src={logo} alt="learnSBAR" />
@@ -121,14 +118,14 @@ const Login = () => {
             />
             <button className="login">Login</button>
             <div className="persistCheck">
-                    <input
-                        type="checkbox"
-                        id="persist"
-                        onChange={togglePersist}
-                        checked={persist}
-                    />
-                    <label htmlFor="persist">Trust This Device</label>
-                </div>
+              <input
+                type="checkbox"
+                id="persist"
+                onChange={togglePersist}
+                checked={persist}
+              />
+              <label htmlFor="persist">Trust This Device</label>
+            </div>
           </form>
         </div>
       </div>

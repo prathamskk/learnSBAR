@@ -8,8 +8,22 @@ const Main = () => {
   const axiosPrivate = useAxiosPrivate();
   const [isblocked, setIsblocked] = useState(false);
   const [blobUrl, setBlobUrl] = useState("");
-  const [isrecording, setIsrecording] = useState(false);
   const [audio, setAudio] = useState("");
+  const [isrecording, setIsrecording] = useState(false);
+  const [scenarios, setScenarios] = useState({});
+  useEffect(async () => {
+    await axiosPrivate
+      .get(
+        "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/submission"
+      )
+      .then((response) => {
+        setScenarios(response.data);
+      })
+      .catch((error) => {
+        alert("ERROR " + JSON.stringify(error));
+      })
+      .finally(() => {});
+  }, []);
 
   useEffect(() => {
     navigator.getUserMedia(
@@ -106,18 +120,11 @@ const Main = () => {
         alert(JSON.stringify(error));
       });
   };
-  const getScenario = () => {
-    axiosPrivate
-      .get(
-        "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/submission"
-      )
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        alert("ERROR " + JSON.stringify(error));
-      });
-  };
+
+  useEffect(() => {
+    console.log(scenarios);
+  }, [scenarios]);
+
   return (
     <>
       <button onClick={start} disabled={isrecording} type="button">
@@ -127,10 +134,8 @@ const Main = () => {
         Stop
       </button>
       <audio src={blobUrl} controls="controls" />
-
-      <button onClick={getScenario} type="button">
-        GET SCENARIO LIST
-      </button>
+      <div style={{color:"red"}}> {JSON.stringify(scenarios)}</div>
+     
     </>
   );
 };
