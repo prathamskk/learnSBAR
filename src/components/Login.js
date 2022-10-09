@@ -57,6 +57,7 @@ const Login = () => {
       setPassword("");
       navigate(from, { replace: true });
     } catch (err) {
+      setLoggedInState("");
       if (!err?.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 400) {
