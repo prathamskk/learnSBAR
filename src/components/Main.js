@@ -2,30 +2,16 @@ import MicRecorder from "mic-recorder-to-mp3";
 import React, { useState, useEffect } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from "axios";
+import useAuth from "../hooks/useAuth";
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
 const Main = () => {
+  const { scenarios } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const [isblocked, setIsblocked] = useState(false);
   const [blobUrl, setBlobUrl] = useState("");
   const [audio, setAudio] = useState("");
   const [isrecording, setIsrecording] = useState(false);
-  const [scenarios, setScenarios] = useState(null);
-  useEffect(() => {
-    axiosPrivate
-      .get(
-        "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/submission"
-      )
-      .then((response) => {
-        console.log(response.data);
-        setScenarios(response.data?.scenarios);
-      })
-      .catch((error) => {
-        console.error(error)
-        alert("ERROR " + JSON.stringify(error));
-      })
-      .finally(() => { });
-  }, []);
 
   useEffect(() => {
     navigator.getUserMedia(
@@ -103,7 +89,7 @@ const Main = () => {
                 {
                   scenarioNo: "1",
                   attemptNo: "1",
-                  type: "rec2",
+                  type: "rec1",
                   data: url,
                 }
               )
@@ -123,17 +109,6 @@ const Main = () => {
       });
   };
 
-  const getdata = (scenarios) => {
-    console.log("here",scenarios["1"])
-    const data = scenarios["1"]?.map((scenario,index) => <div style={{color:"black"}} key={index}>{scenario["rec1"]}</div>);
-    console.log(data)
-    return data
-  }
-
-  // useEffect(() => {
-  //   console.log(scenarios);
-  // }, [scenarios]);
-
   return (
     <>
       <button onClick={start} disabled={isrecording} type="button">
@@ -143,8 +118,8 @@ const Main = () => {
         Stop
       </button>
       <audio src={blobUrl} controls="controls" />
-      <div style={{ color: "red" }}> {JSON.stringify(scenarios)}</div>
-      {scenarios && getdata(scenarios)}
+     
+      {scenarios!=={} &&  <div style={{ color: "red" }}> {JSON.stringify(scenarios)}</div>}
     </>
   );
 };
