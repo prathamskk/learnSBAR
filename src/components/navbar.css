@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
-.heading{
+.nav{
     font-size: 14px;
     font-weight: 700;
     font-family: "Karla";
@@ -10,6 +10,8 @@
     padding: 15px;
     box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
     margin-bottom: 10px;
+    width: 100%;
+    position: fixed;
 }
 .fi{
     color: #4B4B4B;

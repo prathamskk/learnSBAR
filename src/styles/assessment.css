@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+.Sno{
+    font-size: 16px;
+    color: rgb(40, 36, 36);
+    font-weight: 700;
+    font-family: 'Karla';
+    padding-left: 40px;
+    padding-top: 100px;
+}
+.AudLin{
+    color: rgb(40, 36, 36);
+    font-weight: 700;
+    padding-top: 26px;
+    margin-bottom: 63px;
+    font-size: 12px;
+    font-family: 'Karla';
+    padding-left: 45px;
+}
+.Audio{
+    font-size: 16px;
+    color: rgb(40, 36, 36);
+    font-weight: 700;
+    font-family: 'Karla';
+    margin-left: 45px;
+    /* border: 3px black solid; */
+    width: 230px;
+    height: 65px;
+    margin-top: 45px;
+}
+.QnA{
+    display: flex;
+    flex-direction: column;
+}
+.Q1,.Q2,.Q3,.Q4,.Q5{
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    font-size: 10px;
+    color: #000000;
+    align-items: flex-start;
+    font-family: 'Karla';
+    /* padding-left: 55px; */
+}
+.Qhead{
+    color: rgb(40, 36, 36);
+    font-weight: 700;
+    padding-top: 20px;
+    font-size: 12px;
+    font-family: 'Karla';
+}
+.cb{
+    margin-top: 6px;
+    width: 8px;
+    height: 8px;
+}
+.selbox{
+    width: 100%;
+    border: #000000 2px solid;
+    height: 40px;
+}
