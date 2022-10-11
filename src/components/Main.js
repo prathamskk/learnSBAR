@@ -10,19 +10,21 @@ const Main = () => {
   const [blobUrl, setBlobUrl] = useState("");
   const [audio, setAudio] = useState("");
   const [isrecording, setIsrecording] = useState(false);
-  const [scenarios, setScenarios] = useState({});
-  useEffect(async () => {
-    await axiosPrivate
+  const [scenarios, setScenarios] = useState(null);
+  useEffect(() => {
+    axiosPrivate
       .get(
         "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/submission"
       )
       .then((response) => {
-        setScenarios(response.data);
+        console.log(response.data);
+        setScenarios(response.data?.scenarios);
       })
       .catch((error) => {
+        console.error(error)
         alert("ERROR " + JSON.stringify(error));
       })
-      .finally(() => {});
+      .finally(() => { });
   }, []);
 
   useEffect(() => {
@@ -121,9 +123,16 @@ const Main = () => {
       });
   };
 
-  useEffect(() => {
-    console.log(scenarios);
-  }, [scenarios]);
+  const getdata = (scenarios) => {
+    console.log("here",scenarios["1"])
+    const data = scenarios["1"]?.map((scenario,index) => <div style={{color:"black"}} key={index}>{scenario["rec1"]}</div>);
+    console.log(data)
+    return data
+  }
+
+  // useEffect(() => {
+  //   console.log(scenarios);
+  // }, [scenarios]);
 
   return (
     <>
@@ -134,8 +143,8 @@ const Main = () => {
         Stop
       </button>
       <audio src={blobUrl} controls="controls" />
-      <div style={{color:"red"}}> {JSON.stringify(scenarios)}</div>
-     
+      <div style={{ color: "red" }}> {JSON.stringify(scenarios)}</div>
+      {scenarios && getdata(scenarios)}
     </>
   );
 };
