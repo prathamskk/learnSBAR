@@ -4,13 +4,13 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div>
-      <header className="heading">
-        <span className="fi">learn</span>
-        <span className="se">SBAR</span>
-      </header>
-      <div className="border"></div>
-    </div>
+    <>
+      <nav class="nav">
+        <span class="fi">learn</span>
+        <span class="se">SBAR</span>
+      </nav>
+      <div class="border"></div>
+    </>
   );
 };
 export default Navbar;

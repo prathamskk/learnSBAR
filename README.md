@@ -1,1 +1,1 @@
-project pillar admin page  made with react
+Making an web app based on the SBAR communication technique.
