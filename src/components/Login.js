@@ -55,7 +55,7 @@ const Login = () => {
       setPassword("");
       const sceresponse = await axiosPrivate
       .get(
-        "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/submission"
+        "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/submission"
       )
       setScenarios(sceresponse.data?.scenarios);
       localStorage.setItem('scenarios', JSON.stringify(sceresponse.data?.scenarios));

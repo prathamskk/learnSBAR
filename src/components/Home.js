@@ -69,7 +69,7 @@ class Home extends React.Component {
     let fileType = ev.type;
     axios
       .post(
-        "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/sign-s3",
+        "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/sign-s3",
         {
           fileName: fileName,
           fileType: fileType,

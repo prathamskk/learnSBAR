@@ -62,7 +62,7 @@ const Main = () => {
     let fileType = ev.type;
     axiosPrivate
       .post(
-        "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/sign-s3",
+        "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/sign-s3",
         {
           fileName: fileName,
           fileType: fileType,
@@ -85,7 +85,7 @@ const Main = () => {
             console.log("audio uploaded");
             axiosPrivate
               .post(
-                "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/submission",
+                "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/submission",
                 {
                   scenarioNo: "2",
                   attemptNo: "1",
