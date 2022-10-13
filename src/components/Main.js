@@ -87,7 +87,7 @@ const Main = () => {
               .post(
                 "https://jsfu2dh5ie.execute-api.ap-south-1.amazonaws.com/dev/submission",
                 {
-                  scenarioNo: "1",
+                  scenarioNo: "2",
                   attemptNo: "1",
                   type: "rec1",
                   data: url,
@@ -118,8 +118,10 @@ const Main = () => {
         Stop
       </button>
       <audio src={blobUrl} controls="controls" />
-     
-      {scenarios!=={} &&  <div style={{ color: "red" }}> {JSON.stringify(scenarios)}</div>}
+
+      {scenarios !== {} && (
+        <div style={{ color: "red" }}> {JSON.stringify(scenarios)}</div>
+      )}
     </>
   );
 };

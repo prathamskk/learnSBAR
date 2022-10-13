@@ -13,6 +13,7 @@ import LinkPage from "./components/LinkPage";
 import RequireAuth from "./components/RequireAuth";
 import PersistLogin from "./components/PersistLogin";
 import { Routes, Route } from "react-router-dom";
+import Submission from "./components/Submission";
 
 const ROLES = {
   User: 2001,
@@ -34,6 +35,7 @@ function App() {
         {/* we want to protect these routes */}
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+            <Route path="submission" element={<Submission />} />
             <Route path="/" element={<Main />} />
           </Route>
 

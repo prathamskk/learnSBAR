@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+}
+
+#submission_title {
+  color: #382828;
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: "Karla", sans-serif;
+}
+
+.scenario_lists {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  font-family: "Karla", sans-serif;
+}
+
+.scenarios {
+  background-color: #6a88f4;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.scenarioNo {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 219px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+}
+
+.attemptNo {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 219px;
+  height: 100px;
+  background-color: white;
+  border-radius: 8px;
+  color: #383838;
+}

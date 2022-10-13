@@ -1,15 +1,15 @@
 import "./navbar.css";
-import "../styles/reset.css"
+import "../styles/reset.css";
 import React from "react";
 
 const Navbar = () => {
   return (
     <div>
-      <header class="heading">
-        <span class="fi">learn</span>
-        <span class="se">SBAR</span>
+      <header className="heading">
+        <span className="fi">learn</span>
+        <span className="se">SBAR</span>
       </header>
-      <div class="border"></div>
+      <div className="border"></div>
     </div>
   );
 };

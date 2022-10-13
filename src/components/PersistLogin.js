@@ -47,4 +47,4 @@ const PersistLogin = () => {
     )
 }
 
-export default PersistLogin
+export default PersistLogin;
