@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 90px;
 }
 
 #submission_title {
@@ -25,29 +25,46 @@
 
 .scenarios {
   background-color: #6a88f4;
-  padding: 40px;
+  padding: 30px;
   border-radius: 8px;
 }
 
 .scenarioNo {
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 219px;
-  height: 30px;
-  border: 2px solid #fff;
-  border-radius: 8px;
+  text-transform: capitalize;
+  font-weight: 800;
+  font-size: 1.1rem;
 }
 
-.attemptNo {
-  margin-top: 50px;
+.attempts {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 1em;
+}
+
+.submission {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  width: 219px;
-  height: 100px;
+}
+
+.submissionNo {
+  width: 280px;
+  padding: 30px;
   background-color: white;
   border-radius: 8px;
   color: #383838;
+}
+
+.submission-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#time {
+  color: #707070;
 }
