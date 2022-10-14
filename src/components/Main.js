@@ -1,127 +1,58 @@
-import MicRecorder from "mic-recorder-to-mp3";
-import React, { useState, useEffect } from "react";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import axios from "axios";
-import useAuth from "../hooks/useAuth";
-const audioRecorder = new MicRecorder({ bitRate: 128 });
+import s1logo from "../images/scic1.svg";
+import "../styles/homepage.css";
 
 const Main = () => {
-  const { scenarios } = useAuth();
-  const axiosPrivate = useAxiosPrivate();
-  const [isblocked, setIsblocked] = useState(false);
-  const [blobUrl, setBlobUrl] = useState("");
-  const [audio, setAudio] = useState("");
-  const [isrecording, setIsrecording] = useState(false);
-
-  useEffect(() => {
-    navigator.getUserMedia(
-      { audio: true, video: false },
-      () => {
-        console.log("Permission Granted");
-        setIsblocked(false);
-      },
-      () => {
-        console.log("Permission Denied");
-        setIsblocked(false);
-      }
-    );
-  });
-
-  const start = () => {
-    if (isblocked) {
-      console.log("permission Denied");
-    } else {
-      audioRecorder
-        .start()
-        .then(() => {
-          setIsrecording(true);
-        })
-        .catch((e) => console.log(e));
-    }
-  };
-
-  const stop = () => {
-    audioRecorder
-      .stop()
-      .getMp3()
-      .then(([buffer, blob]) => {
-        const blobUrl = URL.createObjectURL(blob);
-        setBlobUrl(blobUrl);
-        setIsrecording(true);
-        var d = new Date();
-        var file = new File([blob], d.valueOf(), { type: "audio/wav" });
-        console.log(file);
-        handleaudiofile(file);
-      })
-      .catch((e) => console.log("We could not retrieve your message"));
-  };
-
-  const handleaudiofile = (ev) => {
-    let file = ev;
-    let fileName = ev.name;
-    let fileType = ev.type;
-    axiosPrivate
-      .post(
-        "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/sign-s3",
-        {
-          fileName: fileName,
-          fileType: fileType,
-        }
-      )
-      .then((response) => {
-        var returnData = response.data.data.returnData;
-        var signedRequest = returnData.signedRequest;
-        var url = returnData.url;
-        var options = {
-          headers: {
-            "Content-Type": fileType,
-          },
-        };
-        axios
-          .put(signedRequest, file, options)
-          .then((result) => {
-            setAudio(url);
-            console.log(audio);
-            console.log("audio uploaded");
-            axiosPrivate
-              .post(
-                "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/submission",
-                {
-                  scenarioNo: "2",
-                  attemptNo: "1",
-                  type: "rec1",
-                  data: url,
-                }
-              )
-              .then((response) => {
-                console.log("successfully added to dynamodb");
-              })
-              .catch((error) => {
-                alert("ERROR " + JSON.stringify(error));
-              });
-          })
-          .catch((error) => {
-            alert("ERROR " + JSON.stringify(error));
-          });
-      })
-      .catch((error) => {
-        alert(JSON.stringify(error));
-      });
-  };
-
   return (
     <>
-      <button onClick={start} disabled={isrecording} type="button">
-        Start
-      </button>
-      <button onClick={stop} type="button">
-        Stop
-      </button>
-      <audio src={blobUrl} controls="controls" />
+      <div className="info">
+        Read how SBAR can ease the communication transfer
+      </div>
+      <div className="container">
+        <a href="/record">
+          <div className="card">
+            <img src={s1logo} class="s1" alt="s1_pic"></img>
 
-      {scenarios !== {} && (
-        <div style={{ color: "red" }}> {JSON.stringify(scenarios)}</div>
-      )}
+            <div className="sch">
+              <h3 className="schead">Scenario 1</h3>
+              <div className="scpara">
+                This scenario describes about the patient’s sufferings she is
+                currently going through.
+              </div>
+            </div>
+            <div className="gitem layout">Pass</div>
+          </div>
+        </a>
+
+        <div className="card">
+          <img src={s1logo} class="s1" alt="sbar_pic" />
+
+          <div className="sch">
+            <h3 className="schead">Scenario 2</h3>
+            <div className="scpara">.</div>
+          </div>
+          <div className="gitem layout">Pass</div>
+        </div>
+        <div className="card">
+          {/* <div> */}
+          <img src={s1logo} class="s1"></img>
+          {/* </div> */}
+          <div className="sch">
+            <h3 className="schead">Scenario 3</h3>
+            <div className="scpara">.</div>
+          </div>
+          <div className="gitem layout">Pass</div>
+        </div>
+        <div className="card">
+          {/* <div> */}
+          <img src={s1logo} class="s1"></img>
+          {/* </div> */}
+          <div className="sch">
+            <h3 className="schead">Scenario 4</h3>
+            <div className="scpara">.</div>
+          </div>
+          <div className="gitem layout">Pass</div>
+        </div>
+      </div>
     </>
   );
 };
