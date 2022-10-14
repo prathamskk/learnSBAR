@@ -29,15 +29,15 @@ function App() {
         {/* public routes */}
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="record" element={<Record />} />
-        <Route path="linkpage" element={<LinkPage />} />
+
         <Route path="unauthorized" element={<Unauthorized />} />
-        <Route path="assessment" element={<Assessment />} />
 
         {/* we want to protect these routes */}
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
             <Route path="submission" element={<Submission />} />
+            <Route path="record" element={<Record />} />
+            <Route path="assessment" element={<Assessment />} />
             <Route path="/" element={<Main />} />
           </Route>
 
