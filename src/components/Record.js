@@ -1,11 +1,17 @@
 import "./record.css";
 import "../styles/reset.css";
 import Navbar from "./Navbar.js";
+import {
+  faMicrophone,
+  faMicrophoneSlash,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MicRecorder from "mic-recorder-to-mp3";
 import React, { useState, useEffect } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
+import "./record.css";
 
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
@@ -39,6 +45,7 @@ const Record = () => {
         .start()
         .then(() => {
           setIsrecording(true);
+          console.log("started recording");
         })
         .catch((e) => console.log(e));
     }
@@ -116,14 +123,27 @@ const Record = () => {
   return (
     <div>
       <Navbar />
-      <div>
-        <button onClick={start} disabled={isrecording} type="button">
-          Start
-        </button>
-        <button onClick={stop} type="button">
-          Stop
-        </button>
-        <audio src={blobUrl} controls="controls" />
+      <div className="audio_recording">
+        <div className="rounded_mic" onClick={start}>
+          <div className="mic">
+            <button className="micro_phone">
+              <i class="bi bi-mic-fill"></i>
+            </button>
+          </div>
+        </div>
+        <div className="sbar_briefing">Record SBAR Briefing</div>
+        {isrecording && (
+          <div>
+            <button onClick={stop} type="button" className="controls">
+              Stop
+            </button>
+          </div>
+        )}
+      </div>
+      <div className="next-btn">
+        <a href="/assessment" aria-disabled="true" className="next">
+          Next
+        </a>
       </div>
     </div>
   );

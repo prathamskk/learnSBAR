@@ -8,7 +8,7 @@ const Main = () => {
         Read how SBAR can ease the communication transfer
       </div>
       <div className="container">
-        <a href="/record">
+        <a href="/scenario">
           <div className="card">
             <img src={s1logo} class="s1" alt="s1_pic"></img>
 
