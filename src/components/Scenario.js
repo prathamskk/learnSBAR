@@ -1,7 +1,6 @@
 import "../styles/scenario.css";
 import Navbar from "./Navbar";
 import patient from "../images/patient_image.png";
-import triangle from "../images/triangle.svg";
 import scenario_1 from "../images/scenario_1.mp4";
 
 const Scenario = () => {
