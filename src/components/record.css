@@ -6,3 +6,74 @@
     color:red;
 } */
 
+.audio_recording {
+  height: 60vh;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.rounded_mic {
+  border: 2px solid #7852e3;
+  display: flex;
+  flex-direction: column;
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  justify-content: center;
+  align-items: center;
+}
+
+.sbar_briefing {
+  color: #000;
+  font-family: "Karla", sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.micro_phone,
+.micro_phoneSlash {
+  outline: none;
+  border: none;
+  background-color: white;
+}
+
+.bi-mic-fill {
+  color: #7852e3;
+  font-size: 40px;
+}
+
+.controls {
+  border: none;
+  outline: none;
+  width: 170px;
+  height: 40px;
+  border-radius: 30px;
+  background-color: #7852e3;
+  color: #fff;
+}
+
+.next {
+  border: none;
+  outline: none;
+  background-color: #588ad6;
+  width: 300px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  bottom: -200px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Karla", sans-serif;
+}
+
+.next-btn {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}

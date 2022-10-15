@@ -11,10 +11,12 @@ import Record from "./components/Record";
 import Lounge from "./components/Lounge";
 import LinkPage from "./components/LinkPage";
 import Assessment from "./components/Assessment";
+import Reflective from "./components/Reflective";
 import RequireAuth from "./components/RequireAuth";
 import PersistLogin from "./components/PersistLogin";
 import { Routes, Route } from "react-router-dom";
 import Submission from "./components/Submission";
+import Scenario from "./components/Scenario";
 
 const ROLES = {
   User: 2001,
@@ -29,15 +31,18 @@ function App() {
         {/* public routes */}
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="record" element={<Record />} />
-        <Route path="linkpage" element={<LinkPage />} />
+
         <Route path="unauthorized" element={<Unauthorized />} />
-        <Route path="assessment" element={<Assessment />} />
 
         {/* we want to protect these routes */}
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+            <Route path="scenario" element={<Scenario />} />
+
             <Route path="submission" element={<Submission />} />
+            <Route path="record" element={<Record />} />
+            <Route path="assessment" element={<Assessment />} />
+            <Route path="reflective" element={<Reflective />} />
             <Route path="/" element={<Main />} />
           </Route>
 

@@ -1,4 +1,4 @@
-import "./navbar.css";
+import "../styles/navbar.css";
 import "../styles/reset.css";
 import React from "react";
 
@@ -9,7 +9,6 @@ const Navbar = () => {
         <span class="fi">learn</span>
         <span class="se">SBAR</span>
       </nav>
-      <div class="border"></div>
     </>
   );
 };

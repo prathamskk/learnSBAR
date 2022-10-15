@@ -4,6 +4,7 @@ import "../styles/reset.css";
 import Navbar from "./Navbar.js";
 
 const Assessment = () => {
+  
   return (
     <div>
       <Navbar />
@@ -160,6 +161,11 @@ const Assessment = () => {
               </span>
             </label>
           </div>
+        </div>
+        <div className="next-btn-assess">
+          <a href="/reflective" aria-disabled="true" className="next-assess">
+            Next
+          </a>
         </div>
       </div>
     </div>

@@ -1,0 +1,22 @@
+.next-btn-reflect {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.next-reflect {
+  border: none;
+  outline: none;
+  background-color: #588ad6;
+  width: 300px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  bottom: -200px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Karla", sans-serif;
+}
