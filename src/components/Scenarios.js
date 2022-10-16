@@ -2,8 +2,15 @@ import { Link } from "react-router-dom";
 import s1logo from "../images/scic1.svg";
 import Navbar from "./Navbar";
 import "../styles/homepage.css";
+import useScenarios from "../hooks/useScenarios";
+import { useEffect } from "react";
 
 const Scenarios = () => {
+  const refreshScenarios = useScenarios();
+  useEffect(()=>{
+    refreshScenarios();
+  },[])
+ 
   return (
     <div className="scenarios_list">
       <div className="card_container">

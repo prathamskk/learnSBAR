@@ -5,13 +5,16 @@ import "../styles/login.css";
 import nurses from "../images/nurses_register.png";
 import logo from "../images/LearnSBAR (2) 2.png";
 import Spinner from "./Spinner";
-import axios, { axiosPrivate } from "../api/axios";
+import axios from "../api/axios";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import useScenarios from "../hooks/useScenarios";
+
 const LOGIN_URL = "/auth";
 
 const Login = () => {
   const axiosPrivate = useAxiosPrivate();
-  const { setAuth, persist, setPersist , setScenarios } = useAuth();
+  const refreshScenarios = useScenarios();
+  const { setAuth, persist, setPersist, setScenarios } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -53,13 +56,7 @@ const Login = () => {
       setAuth({ email, password, roles, accessToken });
       setEmail("");
       setPassword("");
-      // localStorage.setItem('scenarios', "");
-      const sceresponse = await axiosPrivate
-      .get(
-        "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/submission"
-      )
-      setScenarios(sceresponse.data?.scenarios);
-      localStorage.setItem('scenarios', JSON.stringify(sceresponse.data?.scenarios));
+      refreshScenarios();
 
       navigate(from, { replace: true });
     } catch (err) {

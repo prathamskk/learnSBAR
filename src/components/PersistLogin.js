@@ -2,13 +2,10 @@ import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useRefreshToken from "../hooks/useRefreshToken";
 import useAuth from "../hooks/useAuth";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import useScenarios from "../hooks/useScenarios";
+
 const PersistLogin = () => {
-  const axiosPrivate = useAxiosPrivate();
   const [isLoading, setIsLoading] = useState(true);
   const refresh = useRefreshToken();
-  const refreshScenario = useScenarios();
   const { auth, persist, setScenarios } = useAuth();
 
   useEffect(() => {
@@ -17,7 +14,6 @@ const PersistLogin = () => {
     const verifyRefreshToken = async () => {
       try {
         await refresh();
-        await refreshScenario();
       } catch (err) {
         console.error(err);
       } finally {
