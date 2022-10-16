@@ -1,6 +1,5 @@
 import "./record.css";
 import "../styles/reset.css";
-import Navbar from "./Navbar.js";
 import {
   faMicrophone,
   faMicrophoneSlash,
@@ -15,7 +14,7 @@ import "./record.css";
 
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
-const Record = () => {
+const Record = ({setStepno}) => {
   const { scenarios } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const [isblocked, setIsblocked] = useState(false);
@@ -102,12 +101,14 @@ const Record = () => {
                 {
                   scenarioNo: "2",
                   attemptNo: "1",
-                  type: "rec1",
+                  type: "ass1",
                   data: url,
                 }
               )
               .then((response) => {
                 console.log("successfully added to dynamodb");
+                setStepno("1")
+                
               })
               .catch((error) => {
                 alert("ERROR " + JSON.stringify(error));
@@ -124,7 +125,6 @@ const Record = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="audio_recording">
         <div className="rounded_mic" onClick={() => start()}>
           <div className="mic">

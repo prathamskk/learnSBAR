@@ -139,7 +139,7 @@ const Register = () => {
                 <input
                   type="text"
                   id="username"
-                  placeholder="Enter your username"   
+                  placeholder="Enter your username"
                   ref={userRef}
                   autoComplete="off"
                   onChange={(e) => setEmail(e.target.value)}
@@ -151,22 +151,21 @@ const Register = () => {
                   onBlur={() => setEmailFocus(false)}
                 />
 
-              <p
-                id="uidnote"
-                className={
-                  emailFocus && email && !validEmail
-                    ? "instructions"
-                    : "offscreen"
-                }
-              >
-              
-                <FontAwesomeIcon icon={faInfoCircle} />
-                4 to 24 characters.
-                <br />
-                Must begin with a letter.
-                <br />
-                Letters, numbers, underscores, hyphens allowed.
-              </p>
+                <p
+                  id="uidnote"
+                  className={
+                    emailFocus && email && !validEmail
+                      ? "instructions"
+                      : "offscreen"
+                  }
+                >
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                  4 to 24 characters.
+                  <br />
+                  Must begin with a letter.
+                  <br />
+                  Letters, numbers, underscores, hyphens allowed.
+                </p>
               </div>
               <label htmlFor="password">
                 <FontAwesomeIcon
@@ -184,7 +183,7 @@ const Register = () => {
                   className="password"
                   type="password"
                   id="password"
-                  placeholder="Enter your password"  
+                  placeholder="Enter your password"
                   onChange={(e) => setPwd(e.target.value)}
                   value={password}
                   required
@@ -193,23 +192,25 @@ const Register = () => {
                   onFocus={() => setPwdFocus(true)}
                   onBlur={() => setPwdFocus(false)}
                 />
-              <p
-                id="pwdnote"
-                className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
-              >
-                <FontAwesomeIcon icon={faInfoCircle} />
-                8 to 24 characters.
-                <br />
-                Must include uppercase and lowercase letters, a number
-                <br /> and a special character.
-                <br />
-                Allowed special characters:{" "}
-                <span aria-label="exclamation mark">!</span>{" "}
-                <span aria-label="at symbol">@</span>{" "}
-                <span aria-label="hashtag">#</span>{" "}
-                <span aria-label="dollar sign">$</span>{" "}
-                <span aria-label="percent">%</span>
-              </p>
+                <p
+                  id="pwdnote"
+                  className={
+                    pwdFocus && !validPwd ? "instructions" : "offscreen"
+                  }
+                >
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                  8 to 24 characters.
+                  <br />
+                  Must include uppercase and lowercase letters, a number
+                  <br /> and a special character.
+                  <br />
+                  Allowed special characters:{" "}
+                  <span aria-label="exclamation mark">!</span>{" "}
+                  <span aria-label="at symbol">@</span>{" "}
+                  <span aria-label="hashtag">#</span>{" "}
+                  <span aria-label="dollar sign">$</span>{" "}
+                  <span aria-label="percent">%</span>
+                </p>
               </div>
               {/* <label htmlFor="confirm_pwd">
                 <FontAwesomeIcon
@@ -242,7 +243,7 @@ const Register = () => {
                   matchFocus && !validMatch ? "instructions" : "offscreen"
                 }
               > */}
-                {/* <FontAwesomeIcon icon={faInfoCircle} />
+              {/* <FontAwesomeIcon icon={faInfoCircle} />
                 Must match the first password input field.
               </p> */}
 
@@ -277,20 +278,20 @@ const Register = () => {
               <div className="signup-btn">
                 <button
                   className="sign-up"
-                  disabled={
-                    !validEmail || !validPwd  ? true : false
-                  }
+                  disabled={!validEmail || !validPwd ? true : false}
                 >
                   Sign Up
                 </button>
               </div>
             </form>
-            <br/><br/><br/>
+            <br />
+            <br />
+            <br />
             <p className="aa">
               Already registered?
-              <br/>
-              <span className="line" >
-               <Link to="/login">Login</Link>
+              <br />
+              <span className="line">
+                <Link to="/login">Login</Link>
               </span>
             </p>
           </div>

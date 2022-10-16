@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import s1logo from "../images/scic1.svg";
 import Navbar from "./Navbar";
 import "../styles/homepage.css";
 
-const Main = () => {
+const Scenarios = () => {
   return (
     <div className="scenarios_list">
       <Navbar />
@@ -16,7 +17,6 @@ const Main = () => {
         <div className="container_div">
           <div className="card">
             <img src={s1logo} class="s1" alt="s1_pic"></img>
-
             <div className="sch">
               <h3 className="schead">Scenario 1</h3>
               <div className="scpara">
@@ -64,4 +64,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Scenarios;

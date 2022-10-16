@@ -1,13 +1,11 @@
 import React from "react";
 import "../styles/assessment.css";
 import "../styles/reset.css";
-import Navbar from "./Navbar.js";
 
 const Assessment = () => {
   
   return (
     <div>
-      <Navbar />
       <div className="container1">
         <div className="Sno">Scenerio 1</div>
         <div className="Audio">
