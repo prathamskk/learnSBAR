@@ -55,7 +55,8 @@
   color: #fff;
 }
 
-.next {
+.next,
+.disabled_next {
   border: none;
   outline: none;
   background-color: #588ad6;
@@ -70,6 +71,12 @@
   justify-content: center;
   align-items: center;
   font-family: "Karla", sans-serif;
+}
+
+.disabled_next {
+  background-color: #809cc5;
+  opacity: 0.7;
+  cursor: default;
 }
 
 .next-btn {

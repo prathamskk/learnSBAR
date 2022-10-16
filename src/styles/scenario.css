@@ -23,7 +23,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* gap: 20px; */
+  gap: 20px;
   align-items: center;
   font-family: "Karla";
   justify-content: center;
@@ -67,6 +67,7 @@ video {
 }
 .na,
 .ps {
+  text-align: center;
   border-radius: 1em;
   height: 54px;
   width: 112px;

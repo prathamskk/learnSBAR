@@ -1,24 +1,29 @@
 import "../styles/reflective.css";
+import { useState } from "react";
 
 const Reflective = () => {
+  const [formData, setFormData] = useState({});
+
   return (
     <div>
       <div>
         <div>Fill Self Reflective Questions</div>
       </div>
       <div>
-        <div className="reflective_1">
-          <div className="quest_1">
-            <div>What you did well?</div>
+        <form onSubmit="">
+          <div className="reflective_1">
+            <div className="quest_1">
+              <div>What you did well?</div>
+            </div>
+            <div className="options"></div>
           </div>
-          <div className="options"></div>
-        </div>
-        <div className="reflective_2">
-          <div className="quest_1">
-            <div>What you thought could be improved?</div>
+          <div className="reflective_2">
+            <div className="quest_1">
+              <div>What you thought could be improved?</div>
+            </div>
+            <div className="options"></div>
           </div>
-          <div className="options"></div>
-        </div>
+        </form>
       </div>
       <div className="next-btn-reflect">
         <a href="/assessment" aria-disabled="true" className="next-reflect">

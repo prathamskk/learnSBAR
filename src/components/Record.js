@@ -22,7 +22,8 @@ const Record = () => {
   const [blobUrl, setBlobUrl] = useState("");
   const [audio, setAudio] = useState("");
   const [isrecording, setIsrecording] = useState(false);
-
+  const [isRecorded, setIsRecorded] = useState(false);
+  
   useEffect(() => {
     navigator.getUserMedia(
       { audio: true, video: false },
@@ -58,13 +59,14 @@ const Record = () => {
       .then(([buffer, blob]) => {
         const blobUrl = URL.createObjectURL(blob);
         setBlobUrl(blobUrl);
-        setIsrecording(true);
+        setIsrecording(false);
         var d = new Date();
         var file = new File([blob], d.valueOf(), { type: "audio/wav" });
         console.log(file);
         handleaudiofile(file);
       })
       .catch((e) => console.log("We could not retrieve your message"));
+    setIsRecorded(true);
   };
 
   const handleaudiofile = (ev) => {
@@ -124,7 +126,7 @@ const Record = () => {
     <div>
       <Navbar />
       <div className="audio_recording">
-        <div className="rounded_mic" onClick={start}>
+        <div className="rounded_mic" onClick={() => start()}>
           <div className="mic">
             <button className="micro_phone">
               <i class="bi bi-mic-fill"></i>
@@ -141,7 +143,13 @@ const Record = () => {
         )}
       </div>
       <div className="next-btn">
-        <a href="/assessment" aria-disabled="true" className="next">
+        <a
+          href="/assessment"
+          className={isRecorded ? "next" : "disabled_next"}
+          onClick={
+            isRecorded ? (event) => event.preventDefault() : "/assessment"
+          }
+        >
           Next
         </a>
       </div>
