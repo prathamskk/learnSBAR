@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import s1logo from "../images/scic1.svg";
-import Navbar from "./Navbar";
 import "../styles/homepage.css";
 
 const Scenarios = () => {
   return (
     <div className="scenarios_list">
-      <Navbar />
       <div className="card_container">
         <div className="info">
           <div>
@@ -20,7 +18,7 @@ const Scenarios = () => {
             <div className="sch">
               <h3 className="schead">Scenario 1</h3>
               <div className="scpara">
-                <a href="/scenario" className="card_link">
+                <a href="/scenario/1" className="card_link">
                   This scenario describes about the patient’s sufferings she is
                   currently going through.
                 </a>

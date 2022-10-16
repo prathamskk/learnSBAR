@@ -17,7 +17,8 @@ const calculateAttemptNo = (scenarios, scenarioId) => {
   for (attempt in scenariosObject) {
     const lastattempt =
       scenarios["scenario" + scenarioId]["attempt" + attemptno];
-    for (let stepno in AttemptSteps) {
+    for (let stepno = 0; stepno < AttemptSteps.length; stepno++) {
+      console.log(stepno);
       console.log(lastattempt[AttemptSteps[stepno]]);
       if (lastattempt[AttemptSteps[stepno]] === undefined) {
         return { stepno: stepno, attemptno: attemptno };
@@ -28,33 +29,35 @@ const calculateAttemptNo = (scenarios, scenarioId) => {
     attempt = "attempt" + attemptno;
   }
 
-  return {stepno: "0", attemptno: attemptno};
+  return { stepno: 0, attemptno: attemptno };
 };
 
 const NewAttempt = () => {
   const [stepno, setStepno] = useState(0);
+  const [attemptNo, setAttemptNo] = useState(0);
+
   const params = useParams();
   const { scenarios } = useAuth();
   useEffect(() => {
     const result = calculateAttemptNo(scenarios, params.scenarioId);
     setStepno(result.stepno);
+    setAttemptNo(result.attemptno);
+    
     console.log(
       "FINAL ATTEMPT NO : ",
       calculateAttemptNo(scenarios, params.scenarioId)
     );
   }, []);
 
-
-
   switch (stepno) {
-    case "0":
-      console.log("hello" , setStepno);
-      return <Record setStepno={setStepno} />;
-    case "1":
+    case 0:
+      console.log("hello", setStepno);
+      return <Record setStepno={setStepno} attemptNo={attemptNo} />;
+    case 1:
       return <Assessment />;
-    case "2":
+    case 2:
       return <Reflective />;
-    case "3":
+    case 3:
       return <Record />;
     default:
       return <Record />;

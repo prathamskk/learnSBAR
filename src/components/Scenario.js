@@ -6,14 +6,14 @@ import { useEffect } from "react";
 const Scenario = () => {
   const navigate = useNavigate();
   const params = useParams();
-  useEffect(() => {
-    //IF SCENARIO DOESNT EXIST GO BACK TO SCENARIOS LIST
-    if (ScenariosList["scenario" + params.scenarioId] == undefined) {
-      navigate("/");
-    }
-  }, []);
 
-  const handleNewAttempt = () => {};
+  // useEffect(() => {
+  //   //IF SCENARIO DOESNT EXIST GO BACK TO SCENARIOS LIST
+  //   console.log(ScenariosList["scenario1"]);
+  //   if (ScenariosList["scenario" + params.scenarioId] === undefined) {
+  //     navigate("/");
+  //   }
+  // });
 
   return (
     <div>
@@ -33,7 +33,7 @@ const Scenario = () => {
         <label class="la">scenario explaination video</label>
 
         <div class="buttons">
-          <Link to="/newattempt">
+          <Link to={"/newattempt/" + params.scenarioId}>
             <button className="na">
               New <br />
               Attempt

@@ -34,14 +34,13 @@
   mix-blend-mode: multiply;
 }
 
-.inputContainer{
+.inputContainer {
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
 }
 
-.instructions
-{
+.instructions {
   font-size: 10px;
   position: absolute;
   /* display: inline-block; */
@@ -115,12 +114,6 @@
   max-width: 100%;
 }
 
-html {
-  font-family: "Nunito", sans-serif;
-  font-size: 22px;
-  color: #fff;
-}
-
 body {
   min-height: 100vh;
 }
@@ -162,7 +155,7 @@ select {
 label,
 button {
   /* margin-top: 2rem; */
-} 
+}
 
 li {
   list-style-type: none;

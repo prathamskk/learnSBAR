@@ -7,6 +7,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MicRecorder from "mic-recorder-to-mp3";
 import React, { useState, useEffect } from "react";
+import { Navigate, useParams } from "react-router-dom";
+
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
@@ -14,7 +16,7 @@ import "./record.css";
 
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
-const Record = ({setStepno}) => {
+const Record = ({ setStepno, attemptNo }) => {
   const { scenarios } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const [isblocked, setIsblocked] = useState(false);
@@ -22,8 +24,10 @@ const Record = ({setStepno}) => {
   const [audio, setAudio] = useState("");
   const [isrecording, setIsrecording] = useState(false);
   const [isRecorded, setIsRecorded] = useState(false);
-  
+  const params = useParams();
+
   useEffect(() => {
+    console.log(attemptNo);
     navigator.getUserMedia(
       { audio: true, video: false },
       () => {
@@ -95,20 +99,22 @@ const Record = ({setStepno}) => {
             setAudio(url);
             console.log(audio);
             console.log("audio uploaded");
+            console.log("scenario" + params.scenarioId);
+            console.log("attempt" + attemptNo);
+
             axiosPrivate
               .post(
                 "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/submission",
                 {
-                  scenarioNo: "2",
-                  attemptNo: "1",
-                  type: "ass1",
+                  scenarioNo: params.scenarioId,
+                  attemptNo: attemptNo,
+                  type: "rec1",
                   data: url,
                 }
               )
               .then((response) => {
                 console.log("successfully added to dynamodb");
-                setStepno("1")
-                
+                setStepno(1);
               })
               .catch((error) => {
                 alert("ERROR " + JSON.stringify(error));
