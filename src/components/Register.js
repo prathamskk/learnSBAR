@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../api/axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import nurse_gang from "../images/nurse_reg.png";
 import "../styles/register.css";
 
@@ -16,6 +16,7 @@ const MOBILE_REGEX = /^([0|+[0-9]{1,5})?([7-9][0-9]{9})$/;
 const REGISTER_URL = "/register";
 
 const Register = () => {
+  const navigate = useNavigate();
   const userRef = useRef();
   const errRef = useRef();
 
@@ -88,6 +89,7 @@ const Register = () => {
       setPwd("");
       //setMatchPwd("");
       setMobile("");
+      navigate("/login");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
