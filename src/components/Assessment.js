@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/assessment.css";
 import "../styles/reset.css";
+import { useState } from "react";
 
-const Assessment = () => {
-  
+const Assessment = ({ attemptNo }) => {
+  const [assessmentData, setAssessmentData] = useState("");
+  const [assessmentFormData, setAssessmentFormData] = useState({});
+
+  useEffect(() => {
+    setAssessmentFormData({ ...assessmentData, assessmentData });
+    console.log(assessmentFormData);
+  }, [assessmentData]);
+
   return (
     <div>
       <div className="container1">
         <div className="Sno">Scenerio 1</div>
         <div className="Audio">
           {/* Audio */}
-          <audio
-            src="https://learnsbar-audio-recordings.s3.amazonaws.com/1665505837958"
-            controls="controls"
-          />
+          <audio src="" controls="controls" />
         </div>
         <div className="AudLin">Listen Back and fill self assessment form</div>
         <div className="QnA">
@@ -21,7 +26,16 @@ const Assessment = () => {
             <div className="Qhead">Identify</div>
             <label for="1.1" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="1.1" id="1.1" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="1.1"
+                  id="1.1"
+                  onClick={(e) => {
+                    setAssessmentData(e.target.value);
+                    console.log(assessmentData);
+                  }}
+                />
               </span>
               <span>
                 <label>Name</label>
@@ -29,7 +43,13 @@ const Assessment = () => {
             </label>
             <label for="1.2" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="1.2" id="1.2" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="1.2"
+                  id="1.2"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Position/Professional Title</label>
@@ -37,7 +57,13 @@ const Assessment = () => {
             </label>
             <label for="1.3" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="1.3" id="1.3" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="1.3"
+                  id="1.3"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Where he/she is calling from</label>
@@ -49,7 +75,13 @@ const Assessment = () => {
             <div className="Qhead">Situation</div>
             <label for="2.1" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="2.1" id="2.1" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="2.1"
+                  id="2.1"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Patient by name and age</label>
@@ -57,7 +89,13 @@ const Assessment = () => {
             </label>
             <label for="2.2" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="2.2" id="2.2" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="2.2"
+                  id="2.2"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Diagnosis or cheif complaint</label>
@@ -65,7 +103,13 @@ const Assessment = () => {
             </label>
             <label for="2.3" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="2.3" id="2.3" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="2.3"
+                  id="2.3"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Reason for the call/problem</label>
@@ -77,7 +121,13 @@ const Assessment = () => {
             <div className="Qhead">Background & Assessment</div>
             <label for="3.1" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="3.1" id="3.1" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="3.1"
+                  id="3.1"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Relevant Past Medical History</label>
@@ -85,7 +135,13 @@ const Assessment = () => {
             </label>
             <label for="3.2" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="3.2" id="3.2" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="3.2"
+                  id="3.2"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Relevant assessment data</label>
@@ -93,7 +149,13 @@ const Assessment = () => {
             </label>
             <label for="3.3" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="3.3" id="3.3" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="3.3"
+                  id="3.3"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Recent interventions for the patient</label>
@@ -105,7 +167,13 @@ const Assessment = () => {
             <div className="Qhead">Recommendation & Repeat</div>
             <label for="4.1" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="4.1" id="4.1" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="4.1"
+                  id="4.1"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>
@@ -116,7 +184,13 @@ const Assessment = () => {
             </label>
             <label for="4.2" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="4.2" id="4.2" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="4.2"
+                  id="4.2"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Provides timeframe/urgency for action</label>
@@ -124,7 +198,13 @@ const Assessment = () => {
             </label>
             <label for="4.3" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="4.3" id="4.3" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="4.3"
+                  id="4.3"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Repeats back all orders; clarifying if needed</label>
@@ -136,7 +216,13 @@ const Assessment = () => {
             <div className="Qhead">Order & Accuracy</div>
             <label for="5.1" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="5.1" id="5.1" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="5.1"
+                  id="5.1"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Correct Order/Sequence</label>
@@ -144,7 +230,13 @@ const Assessment = () => {
             </label>
             <label for="5.2" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="5.2" id="5.2" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="5.2"
+                  id="5.2"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Accurate Data Reported</label>
@@ -152,7 +244,13 @@ const Assessment = () => {
             </label>
             <label for="5.3" className="selbox">
               <span>
-                <input type="checkbox" className="cb" value="5.3" id="5.3" />
+                <input
+                  type="checkbox"
+                  className="cb"
+                  value="5.3"
+                  id="5.3"
+                  onClick={(e) => setAssessmentData(e.target.value)}
+                />
               </span>
               <span>
                 <label>Concise</label>

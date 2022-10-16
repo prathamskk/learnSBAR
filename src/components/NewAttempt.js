@@ -42,7 +42,7 @@ const NewAttempt = () => {
     const result = calculateAttemptNo(scenarios, params.scenarioId);
     setStepno(result.stepno);
     setAttemptNo(result.attemptno);
-    
+
     console.log(
       "FINAL ATTEMPT NO : ",
       calculateAttemptNo(scenarios, params.scenarioId)
@@ -54,7 +54,7 @@ const NewAttempt = () => {
       console.log("hello", setStepno);
       return <Record setStepno={setStepno} attemptNo={attemptNo} />;
     case 1:
-      return <Assessment />;
+      return <Assessment attemptNo={attemptNo} />;
     case 2:
       return <Reflective />;
     case 3:
