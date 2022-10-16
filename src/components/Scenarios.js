@@ -1,8 +1,29 @@
 import { Link } from "react-router-dom";
 import s1logo from "../images/scic1.svg";
 import "../styles/homepage.css";
+import { useState, useEffect } from "react";
+import useScenarios from "../hooks/useScenarios";
+import { useParams } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const Scenarios = () => {
+  const { setScenarios } = useAuth();
+  const axiosPrivate = useAxiosPrivate();
+
+  useEffect(() => {
+    const refreshScenario = async () => {
+      const sceresponse = await axiosPrivate.get(
+        "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/submission"
+      );
+      setScenarios(sceresponse.data?.scenarios);
+    };
+
+    refreshScenario();
+
+    return () => {};
+  }, []);
+
   return (
     <div className="scenarios_list">
       <div className="card_container">
