@@ -8,7 +8,6 @@ const PersistLogin = () => {
   const axiosPrivate = useAxiosPrivate();
   const [isLoading, setIsLoading] = useState(true);
   const refresh = useRefreshToken();
-  const refreshScenario = useScenarios();
   const { auth, persist, setScenarios } = useAuth();
 
   useEffect(() => {
@@ -17,7 +16,6 @@ const PersistLogin = () => {
     const verifyRefreshToken = async () => {
       try {
         await refresh();
-        await refreshScenario();
       } catch (err) {
         console.error(err);
       } finally {
