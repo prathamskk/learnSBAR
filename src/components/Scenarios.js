@@ -6,7 +6,6 @@ import "../styles/homepage.css";
 const Scenarios = () => {
   return (
     <div className="scenarios_list">
-      <Navbar />
       <div className="card_container">
         <div className="info">
           <div>

@@ -1,21 +1,23 @@
 import "../styles/scenario.css";
 import patient from "../images/patient_image.png";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import ScenariosList from "./scenariosList.json";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const Scenario = () => {
   const navigate = useNavigate();
   const params = useParams();
+
   useEffect(() => {
     //IF SCENARIO DOESNT EXIST GO BACK TO SCENARIOS LIST
-    if (ScenariosList["scenario" + params.scenarioId] == undefined) {
+    if (ScenariosList["scenario" + params.scenarioId] === undefined) {
+      console.log("dasiadasdad");
       navigate("/");
     }
-  }, []);
+  });
 
-  const handleNewAttempt = () => {};
-
-  return (
+  return ScenariosList["scenario" + params.scenarioId] === undefined ? (
+    <></>
+  ) : (
     <div>
       <div class="container">
         <div className="scenariono">Scenario {params.scenarioId}</div>

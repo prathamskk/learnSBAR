@@ -17,9 +17,6 @@ const useRefreshToken = () => {
         accessToken: response.data.accessToken,
       };
     });
-    if (localStorage.getItem("scenarios")) {
-      setScenarios(JSON.parse(localStorage.getItem("scenarios")));
-    }
 
     return response.data.accessToken;
   };
