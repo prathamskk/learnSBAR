@@ -53,6 +53,7 @@ const Login = () => {
       setAuth({ email, password, roles, accessToken });
       setEmail("");
       setPassword("");
+      // localStorage.setItem('scenarios', "");
       const sceresponse = await axiosPrivate
       .get(
         "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/submission"

@@ -1,17 +1,17 @@
+import { Link } from "react-router-dom";
 import s1logo from "../images/scic1.svg";
 import "../styles/homepage.css";
 
-const Main = () => {
+const Scenarios = () => {
   return (
     <>
       <div className="info">
         Read how SBAR can ease the communication transfer
       </div>
       <div className="container">
-        <a href="/scenario">
+        <Link to="/scenario/1">
           <div className="card">
             <img src={s1logo} class="s1" alt="s1_pic"></img>
-
             <div className="sch">
               <h3 className="schead">Scenario 1</h3>
               <div className="scpara">
@@ -21,7 +21,7 @@ const Main = () => {
             </div>
             <div className="gitem layout">Pass</div>
           </div>
-        </a>
+        </Link>
 
         <div className="card">
           <img src={s1logo} class="s1" alt="sbar_pic" />
@@ -57,4 +57,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Scenarios;
