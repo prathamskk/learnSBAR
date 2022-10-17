@@ -21,7 +21,7 @@ const Scenarios = () => {
         </div>
         <div className="container_div">
           <div className="card">
-            <img src={s1logo} class="s1" alt="s1_pic"></img>
+            <img src={s1logo} className="s1" alt="s1_pic"></img>
             <div className="sch">
               <h3 className="schead">Scenario 1</h3>
               <div className="scpara">
@@ -35,7 +35,7 @@ const Scenarios = () => {
           </div>
 
           <div className="card">
-            <img src={s1logo} class="s1" alt="sbar_pic" />
+            <img src={s1logo} className="s1" alt="sbar_pic" />
 
             <div className="sch">
               <h3 className="schead">Scenario 2</h3>
@@ -45,7 +45,7 @@ const Scenarios = () => {
           </div>
           <div className="card">
             {/* <div> */}
-            <img src={s1logo} alt="logo" class="s1"></img>
+            <img src={s1logo} alt="logo" className="s1"></img>
             {/* </div> */}
             <div className="sch">
               <h3 className="schead">Scenario 3</h3>

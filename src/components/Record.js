@@ -135,7 +135,7 @@ const Record = ({ setStepno, attemptNo }) => {
         <div className="rounded_mic" onClick={() => start()}>
           <div className="mic">
             <button className="micro_phone">
-              <i class="bi bi-mic-fill"></i>
+              <i className="bi bi-mic-fill"></i>
             </button>
           </div>
         </div>
