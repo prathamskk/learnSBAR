@@ -2,10 +2,20 @@ import React, { useEffect } from "react";
 import "../styles/assessment.css";
 import "../styles/reset.css";
 import { useState } from "react";
+import useScenarios from "../hooks/useScenarios";
+import useAuth from "../hooks/useAuth";
+import { useParams } from "react-router-dom";
 
 const Assessment = ({ attemptNo }) => {
+  const refreshScenarios = useScenarios();
   const [assessmentData, setAssessmentData] = useState("");
   const [assessmentFormData, setAssessmentFormData] = useState({});
+  const { scenarios } = useAuth();
+  const params = useParams();
+
+  useEffect(() => {
+    refreshScenarios();
+  }, []);
 
   useEffect(() => {
     setAssessmentFormData({ ...assessmentData, assessmentData });
@@ -18,7 +28,7 @@ const Assessment = ({ attemptNo }) => {
         <div className="Sno">Scenerio 1</div>
         <div className="Audio">
           {/* Audio */}
-          <audio src="" controls="controls" />
+        { scenarios["scenario"+params.scenarioId] === {} ?  <audio src={scenarios["scenario"+params.scenarioId]["attempt"+attemptNo].rec1} controls="controls" /> : null}
         </div>
         <div className="AudLin">Listen Back and fill self assessment form</div>
         <div className="QnA">

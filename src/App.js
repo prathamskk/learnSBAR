@@ -22,12 +22,13 @@ const ROLES = {
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        {/* public routes */}
-        <Route path="login" element={<Login />} />
+              <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
 
         <Route path="unauthorized" element={<Unauthorized />} />
+      <Route path="/" element={<Layout />}>
+        {/* public routes */}
+
 
         {/* we want to protect these routes */}
         <Route element={<PersistLogin />}>
