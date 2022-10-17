@@ -16,13 +16,10 @@ const Submission = () => {
       <div className="title">
         <h3 id="submission_title">Previous Submissions</h3>
       </div>
-      {}
       <div className="submission_container">
         <div className="scenario_lists">
           <div className="scenarios">
-            {scenarios ? (
-              <div className="no_submissions">No Submissions yet</div>
-            ) : (
+            {Object.keys(scenarios).length ? (
               Object.keys(scenarios).map((keyName, i) => (
                 <div className="submission">
                   <div className="scenarioNo">{keyName}</div>
@@ -54,6 +51,8 @@ const Submission = () => {
                   })}
                 </div>
               ))
+            ) : (
+              <div className="no_submissions">No Submissions yet</div>
             )}
           </div>
         </div>
