@@ -1,33 +1,29 @@
-import "./record.css";
-import "../styles/reset.css";
-import {
-  faMicrophone,
-  faMicrophoneSlash,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../styles/record.css";
 import MicRecorder from "mic-recorder-to-mp3";
 import React, { useState, useEffect } from "react";
-import { Navigate, useParams } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
-import "./record.css";
 
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
-const Record = ({ setStepno, attemptNo }) => {
+const Record2 = ({
+  setStepno,
+  attemptNo,
+  refreshScenarios,
+  calculateAttemptNo,
+}) => {
   const { scenarios } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const [isblocked, setIsblocked] = useState(false);
   const [blobUrl, setBlobUrl] = useState("");
-  const [audio, setAudio] = useState("");
   const [isrecording, setIsrecording] = useState(false);
   const [isRecorded, setIsRecorded] = useState(false);
   const params = useParams();
 
+  //check for browser audio and video permissions
   useEffect(() => {
-    console.log(attemptNo);
     navigator.getUserMedia(
       { audio: true, video: false },
       () => {
@@ -49,7 +45,6 @@ const Record = ({ setStepno, attemptNo }) => {
         .start()
         .then(() => {
           setIsrecording(true);
-          console.log("started recording");
         })
         .catch((e) => console.log(e));
     }
@@ -65,7 +60,6 @@ const Record = ({ setStepno, attemptNo }) => {
         setIsrecording(false);
         var d = new Date();
         var file = new File([blob], d.valueOf(), { type: "audio/wav" });
-        console.log(file);
         handleaudiofile(file);
       })
       .catch((e) => console.log("We could not retrieve your message"));
@@ -76,6 +70,7 @@ const Record = ({ setStepno, attemptNo }) => {
     let file = ev;
     let fileName = ev.name;
     let fileType = ev.type;
+    //get signed url from s3
     axiosPrivate
       .post(
         "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/sign-s3",
@@ -84,6 +79,7 @@ const Record = ({ setStepno, attemptNo }) => {
           fileType: fileType,
         }
       )
+      //upload audio to signed url
       .then((response) => {
         var returnData = response.data.data.returnData;
         var signedRequest = returnData.signedRequest;
@@ -96,25 +92,20 @@ const Record = ({ setStepno, attemptNo }) => {
         axios
           .put(signedRequest, file, options)
           .then((result) => {
-            setAudio(url);
-            console.log(audio);
-            console.log("audio uploaded");
-            console.log("scenario" + params.scenarioId);
-            console.log("attempt" + attemptNo);
-
+            //Updating dynamodb with url of audio rec1
             axiosPrivate
               .post(
                 "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/submission",
                 {
                   scenarioNo: params.scenarioId,
                   attemptNo: attemptNo,
-                  type: "rec1",
+                  type: "rec2",
                   data: url,
                 }
               )
+              //refresh(get) scenarios from db
               .then((response) => {
-                console.log("successfully added to dynamodb");
-                setStepno(1);
+                refreshScenarios();
               })
               .catch((error) => {
                 alert("ERROR " + JSON.stringify(error));
@@ -129,39 +120,40 @@ const Record = ({ setStepno, attemptNo }) => {
       });
   };
 
+  //update stepno when scenario is updated
+  useEffect(() => {
+    const result = calculateAttemptNo(scenarios, params.scenarioId);
+    console.log(result);
+    setStepno(result.stepno);
+  }, [scenarios]);
+
   return (
     <div>
       <div className="audio_recording">
-        <div className="rounded_mic" onClick={() => start()}>
-          <div className="mic">
-            <button className="micro_phone">
-              <i class="bi bi-mic-fill"></i>
-            </button>
-          </div>
-        </div>
-        <div className="sbar_briefing">
-          Record SBAR Briefing for the second time with the improvements
-        </div>
-        {isrecording && (
+        {!isrecording ? (
+          <button className="rounded_mic" onClick={() => start()}>
+            <div className="mic">
+              <div className="micro_phone">
+                <i className="bi bi-mic-fill"></i>
+              </div>
+            </div>
+          </button>
+        ) : (
           <div>
-            <button onClick={stop} type="button" className="controls">
-              Stop
+            <button onClick={stop} type="button" className="rounded_mic">
+              <div className="mic">
+                <div className="micro_phone">
+                  <i className="bi bi-stop-fill"></i>
+                </div>
+              </div>
             </button>
           </div>
         )}
-      </div>
-      <div className="next-btn">
-        <a
-          href="/assessment"
-          className={isRecorded ? "next" : "disabled_next"}
-          onClick={
-            isRecorded ? (event) => event.preventDefault() : "/assessment"
-          }
-        >
-          Next
-        </a>
+        <div className="sbar_briefing">
+          Record SBAR Briefing for the second time with the improvements
+        </div>
       </div>
     </div>
   );
 };
-export default Record;
+export default Record2;
