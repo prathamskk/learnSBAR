@@ -65,11 +65,7 @@ const NewAttempt = () => {
     setAttemptNo(result.attemptno);
   }, []);
 
-  //debugging statement
-  useEffect(() => {
-    console.log(scenarios, "stepno : ", stepno, "attemptno : ", attemptNo);
-  }, [stepno, attemptNo, scenarios]);
-
+  
   switch (stepno) {
     case 0:
       return (
