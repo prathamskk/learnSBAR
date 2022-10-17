@@ -39,7 +39,6 @@ function App() {
             <Route path="submission" element={<Submission />} />
             <Route path="/" element={<Scenarios />} />
             <Route path="record" element={<Record />} />
-            <Route path="reflective" element={<Reflective />} />
             <Route path="repeattest" element={<RepeatTest />} />
           </Route>
 
