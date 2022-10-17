@@ -7,33 +7,19 @@ const Scenario = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-  useEffect(() => {
-    //IF SCENARIO DOESNT EXIST GO BACK TO SCENARIOS LIST
-    if (ScenariosList["scenario" + params.scenarioId] === undefined) {
-      console.log("dasiadasdad");
-      navigate("/");
-    }
-  });
-
-  return ScenariosList["scenario" + params.scenarioId] === undefined ? (
-    <></>
-  ) : (
+  return (
     <div>
       <div className="container">
-        <div className="scenariono">Scenario {params.scenarioId}</div>
-        <div className="scenariono">
-          {ScenariosList["scenario" + params.scenarioId].name}
-        </div>
         <div className="video">
           <video poster={patient} controls controlsList="play">
             <source
-              src={ScenariosList["scenario" + params.scenarioId].url}
-              type="video/mp4"
+            //   src={ScenariosList["scenario" + params.scenarioId].url}
+            //   type="video/mp4"
             />
           </video>
         </div>
-        <label className="la">
-          watch exemplar SBAR briefing pre-recorder by professional
+        <label className="la2">
+          watch exemplar SBAR briefing pre-recorder <br /> by professional
         </label>
         <div className="buttons">
           <Link to={"/newattempt/" + params.scenarioId}>
@@ -44,7 +30,7 @@ const Scenario = () => {
             </button>
           </Link>
           <Link to="/">
-            <button className="hm">
+            <button className="ps">
               Go To
               <br />
               Homepage

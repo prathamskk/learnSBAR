@@ -10,7 +10,6 @@ import useScenarios from "../hooks/useScenarios";
 import ScenariosList from "./scenariosList.json";
 
 const calculateAttemptNo = (scenarios, scenarioId) => {
- 
   let attemptno = 1;
 
   let attempt = "attempt" + attemptno;
@@ -36,14 +35,17 @@ const calculateAttemptNo = (scenarios, scenarioId) => {
 const NewAttempt = () => {
   const navigate = useNavigate();
   const params = useParams();
+  //IF SCENARIO DOESNT EXIST GO BACK TO SCENARIOS LIST
   useEffect(() => {
-    //IF SCENARIO DOESNT EXIST GO BACK TO SCENARIOS LIST
     if (ScenariosList["scenario" + params.scenarioId] === undefined) {
       console.log("scenario doesnt exist");
       navigate("/");
     }
   });
+
   const refreshScenarios = useScenarios();
+
+  //refreshScenarios
   useEffect(async () => {
     await refreshScenarios();
   }, []);
@@ -51,14 +53,16 @@ const NewAttempt = () => {
   const [stepno, setStepno] = useState(0);
   const [attemptNo, setAttemptNo] = useState(0);
 
- 
   const { scenarios } = useAuth();
+
+  //calculate attempt and scenariono on first load
   useEffect(() => {
     const result = calculateAttemptNo(scenarios, params.scenarioId);
     setStepno(result.stepno);
     setAttemptNo(result.attemptno);
   }, []);
 
+  //debugging statement
   useEffect(() => {
     console.log(scenarios, "stepno : ", stepno, "attemptno : ", attemptNo);
   }, [stepno, attemptNo, scenarios]);
@@ -74,7 +78,14 @@ const NewAttempt = () => {
         />
       );
     case 1:
-      return <Assessment attemptNo={attemptNo} />;
+      return (
+        <Assessment
+          setStepno={setStepno}
+          attemptNo={attemptNo}
+          refreshScenarios={refreshScenarios}
+          calculateAttemptNo={calculateAttemptNo}
+        />
+      );
     case 2:
       return <Reflective />;
     case 3:
