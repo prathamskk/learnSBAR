@@ -65,7 +65,6 @@ const NewAttempt = () => {
     setAttemptNo(result.attemptno);
   }, []);
 
-  
   switch (stepno) {
     case 0:
       return (

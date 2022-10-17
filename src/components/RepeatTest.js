@@ -7,16 +7,22 @@ const Scenario = () => {
   const { scenarios } = useAuth();
   const navigate = useNavigate();
   const params = useParams();
-  // useEffect(() => {
-  //   const result = calculateAttemptNo(scenarios, params.scenarioId);
-  //   setStepno(result.stepno);
-  // }, [scenarios]);
+  useEffect(() => {
+    if (ScenariosList["scenario" + params.scenarioId] === undefined) {
+      console.log("scenario doesnt exist");
+      navigate("/");
+    }
+  });
 
   return (
     <div>
       <div className="container">
         <div className="video">
-          <video poster="/images/patient_image.png" controls controlsList="play">
+          <video
+            poster="/images/patient_image.png"
+            controls
+            controlsList="play"
+          >
             <source
             //   src={ScenariosList["scenario" + params.scenarioId].url}
             //   type="video/mp4"
@@ -27,13 +33,12 @@ const Scenario = () => {
           watch exemplar SBAR briefing pre-recorder <br /> by professional
         </label>
         <div className="buttons">
-         
           <Link to="/newattempt/1">
-          <button className="na" >
-            New
-            <br />
-            Attempt
-          </button>
+            <button className="na">
+              New
+              <br />
+              Attempt
+            </button>
           </Link>
           <Link to="/">
             <button className="ps">
