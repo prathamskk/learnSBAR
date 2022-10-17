@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import AttemptSteps from "./AttemptSteps.json";
 import Record from "./Record";
@@ -7,8 +7,10 @@ import Assessment from "./Assessment";
 import Reflective from "./Reflective";
 import RepeatTest from "./RepeatTest";
 import useScenarios from "../hooks/useScenarios";
+import ScenariosList from "./scenariosList.json";
 
 const calculateAttemptNo = (scenarios, scenarioId) => {
+ 
   let attemptno = 1;
 
   let attempt = "attempt" + attemptno;
@@ -32,6 +34,15 @@ const calculateAttemptNo = (scenarios, scenarioId) => {
 };
 
 const NewAttempt = () => {
+  const navigate = useNavigate();
+  const params = useParams();
+  useEffect(() => {
+    //IF SCENARIO DOESNT EXIST GO BACK TO SCENARIOS LIST
+    if (ScenariosList["scenario" + params.scenarioId] === undefined) {
+      console.log("scenario doesnt exist");
+      navigate("/");
+    }
+  });
   const refreshScenarios = useScenarios();
   useEffect(async () => {
     await refreshScenarios();
@@ -40,7 +51,7 @@ const NewAttempt = () => {
   const [stepno, setStepno] = useState(0);
   const [attemptNo, setAttemptNo] = useState(0);
 
-  const params = useParams();
+ 
   const { scenarios } = useAuth();
   useEffect(() => {
     const result = calculateAttemptNo(scenarios, params.scenarioId);
