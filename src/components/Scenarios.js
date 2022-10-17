@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import s1logo from "../images/scic1.svg";
 import "../styles/homepage.css";
 import useScenarios from "../hooks/useScenarios";
 import { useEffect } from "react";
@@ -21,7 +20,7 @@ const Scenarios = () => {
         </div>
         <div className="container_div">
           <Link to="/scenario/1" className="card">
-            <img src={s1logo} className="s1" alt="s1_pic"></img>
+            <img src="/images/scic1.svg" className="s1" alt="s1_pic"></img>
             <div className="sch">
               <h3 className="schead">Scenario 1 : Mrs Helena Jones</h3>
               <div className="scpara">
@@ -34,7 +33,7 @@ const Scenarios = () => {
             <div className="gitem layout">Pass</div>
           </Link>
           <Link to="/scenario/2" className="card">
-            <img src={s1logo} className="s1" alt="s1_pic"></img>
+            <img src="/images/scic1.svg" className="s1" alt="s1_pic"></img>
             <div className="sch">
               <h3 className="schead">Scenario 2</h3>
               <div className="scpara">
@@ -47,7 +46,7 @@ const Scenarios = () => {
             <div className="gitem layout">Pass</div>
           </Link>
           <Link to="/scenario/3" className="card">
-            <img src={s1logo} className="s1" alt="s1_pic"></img>
+            <img src="/images/scic1.svg" className="s1" alt="s1_pic"></img>
             <div className="sch">
               <h3 className="schead">Scenario 3</h3>
               <div className="scpara">

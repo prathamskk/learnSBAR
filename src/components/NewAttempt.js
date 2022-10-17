@@ -49,8 +49,8 @@ const NewAttempt = () => {
   const refreshScenarios = useScenarios();
 
   //refreshScenarios
-  useEffect(async () => {
-    await refreshScenarios();
+  useEffect(() => {
+    refreshScenarios();
   }, []);
 
   const [stepno, setStepno] = useState(0);

@@ -2,8 +2,6 @@ import { useRef, useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import "../styles/login.css";
-import nurses from "../images/nurses_register.png";
-import logo from "../images/LearnSBAR (2) 2.png";
 import Spinner from "./Spinner";
 import axios from "../api/axios";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
@@ -83,12 +81,12 @@ const Login = () => {
     <section className="nurse_login">
       {loggedInState === "logging in" ? <Spinner /> : ""}
       <div className="nurse_img">
-        <img src={nurses} alt="nurses" />
+        <img src="/images/nurses_register.png" alt="nurses" />
       </div>
 
       <div className="login-wrapper">
         <div className="logo">
-          <img src={logo} alt="learnSBAR" />
+          <img src="/images/learnSbarLOGO.png" alt="learnSBAR" />
         </div>
         <div>
           <p
