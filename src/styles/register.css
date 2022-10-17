@@ -215,3 +215,10 @@ li {
   width: 20px;
   margin: 0 5px 2px 2px;
 }
+
+#correct_logo {
+  position: absolute;
+  color: #389df0;
+  width: 60px;
+  height: 60px;
+}
