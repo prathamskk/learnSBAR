@@ -8,6 +8,7 @@ import Reflective from "./Reflective";
 import RepeatTest from "./RepeatTest";
 import useScenarios from "../hooks/useScenarios";
 import ScenariosList from "./scenariosList.json";
+import Record2 from "./Record2";
 
 const calculateAttemptNo = (scenarios, scenarioId) => {
   let attemptno = 1;
@@ -25,7 +26,7 @@ const calculateAttemptNo = (scenarios, scenarioId) => {
       }
     }
 
-    attemptno++;
+    ++attemptno;
     attempt = "attempt" + attemptno;
   }
 
@@ -87,11 +88,26 @@ const NewAttempt = () => {
         />
       );
     case 2:
-      return <Reflective />;
+      return (
+        <Reflective
+          setStepno={setStepno}
+          attemptNo={attemptNo}
+          refreshScenarios={refreshScenarios}
+          calculateAttemptNo={calculateAttemptNo}
+        />
+      );
     case 3:
-      return <Record />;
+      return (
+        <Record2
+          setStepno={setStepno}
+          attemptNo={attemptNo}
+          refreshScenarios={refreshScenarios}
+          calculateAttemptNo={calculateAttemptNo}
+        />
+      );
     case 4:
       return <RepeatTest />;
+
     default:
       return <Record />;
   }
