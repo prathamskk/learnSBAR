@@ -18,11 +18,11 @@ const Record = ({
   const axiosPrivate = useAxiosPrivate();
   const [isblocked, setIsblocked] = useState(false);
   const [blobUrl, setBlobUrl] = useState("");
-  const [audio, setAudio] = useState("");
   const [isrecording, setIsrecording] = useState(false);
   const [isRecorded, setIsRecorded] = useState(false);
   const params = useParams();
 
+  //check for browser audio and video permissions
   useEffect(() => {
     navigator.getUserMedia(
       { audio: true, video: false },
@@ -70,6 +70,7 @@ const Record = ({
     let file = ev;
     let fileName = ev.name;
     let fileType = ev.type;
+    //get signed url from s3
     axiosPrivate
       .post(
         "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/sign-s3",
@@ -78,6 +79,7 @@ const Record = ({
           fileType: fileType,
         }
       )
+      //upload audio to signed url
       .then((response) => {
         var returnData = response.data.data.returnData;
         var signedRequest = returnData.signedRequest;
@@ -90,9 +92,7 @@ const Record = ({
         axios
           .put(signedRequest, file, options)
           .then((result) => {
-            setAudio(url);
-            console.log("audio uploaded");
-
+            //Updating dynamodb with url of audio rec1
             axiosPrivate
               .post(
                 "https://21eu98s4bi.execute-api.ap-south-1.amazonaws.com/dev/submission",
@@ -103,6 +103,7 @@ const Record = ({
                   data: url,
                 }
               )
+              //refresh(get) scenarios from db
               .then((response) => {
                 refreshScenarios();
               })
@@ -119,6 +120,7 @@ const Record = ({
       });
   };
 
+  //update stepno when scenario is updated
   useEffect(() => {
     const result = calculateAttemptNo(scenarios, params.scenarioId);
     console.log(result);
@@ -128,21 +130,26 @@ const Record = ({
   return (
     <div>
       <div className="audio_recording">
-        <div className="rounded_mic" onClick={() => start()}>
-          <div className="mic">
-            <button className="micro_phone">
-              <i className="bi bi-mic-fill"></i>
-            </button>
-          </div>
-        </div>
-        <div className="sbar_briefing">Record SBAR Briefing</div>
-        {isrecording && (
+        {!isrecording ? (
+          <button className="rounded_mic" onClick={() => start()}>
+            <div className="mic">
+              <div className="micro_phone">
+                <i className="bi bi-mic-fill"></i>
+              </div>
+            </div>
+          </button>
+        ) : (
           <div>
-            <button onClick={stop} type="button" className="controls">
-              Stop
+            <button onClick={stop} type="button" className="rounded_mic">
+              <div className="mic">
+                <div className="micro_phone">
+                  <i className="bi bi-stop-fill"></i>
+                </div>
+              </div>
             </button>
           </div>
         )}
+        <div className="sbar_briefing">Record SBAR Briefing</div>
       </div>
     </div>
   );

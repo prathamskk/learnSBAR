@@ -1,0 +1,17 @@
+{
+  "1.1": "Name",
+  "1.2": "Position/Professional Title",
+  "1.3": "Where he/she is calling from",
+  "2.1": "Patient by name and age",
+  "2.2": "Diagnosis or cheif complaint",
+  "2.3": "Reason for the call/problem",
+  "3.1": "Relevant Past Medical History",
+  "3.2": "Relevant assessment data",
+  "3.3": "Recent interventions for the patient",
+  "4.1": "Suggests potential reason for condition or suggests interventions",
+  "4.2": "Provides timeframe/urgency for action",
+  "4.3": "Repeats back all orders; clarifying if needed",
+  "5.1": "Correct Order/Sequence",
+  "5.2": "Accurate Data Reported",
+  "5.3": "Concise"
+}
