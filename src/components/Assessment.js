@@ -8,19 +8,25 @@ import { useParams } from "react-router-dom";
 
 const Assessment = ({ attemptNo }) => {
   const refreshScenarios = useScenarios();
-  const [assessmentData, setAssessmentData] = useState("");
   const [assessmentFormData, setAssessmentFormData] = useState({});
   const { scenarios } = useAuth();
   const params = useParams();
-
   useEffect(() => {
     refreshScenarios();
   }, []);
 
-  useEffect(() => {
-    setAssessmentFormData({ ...assessmentData, assessmentData });
+  const handleClick = (data, isChecked) => {
+    console.log(isChecked);
+    setAssessmentFormData((prev) => {
+      if (isChecked) {
+        prev[data] = data;
+      } else {
+        delete prev[data];
+      }
+      return prev;
+    });
     console.log(assessmentFormData);
-  }, [assessmentData]);
+  };
 
   return (
     <div>
@@ -28,7 +34,15 @@ const Assessment = ({ attemptNo }) => {
         <div className="Sno">Scenerio 1</div>
         <div className="Audio">
           {/* Audio */}
-        { scenarios["scenario"+params.scenarioId] === {} ?  <audio src={scenarios["scenario"+params.scenarioId]["attempt"+attemptNo].rec1} controls="controls" /> : null}
+          {scenarios["scenario" + params.scenarioId] === {} ? (
+            <audio
+              src={
+                scenarios["scenario" + params.scenarioId]["attempt" + attemptNo]
+                  .rec1
+              }
+              controls="controls"
+            />
+          ) : null}
         </div>
         <div className="AudLin">Listen Back and fill self assessment form</div>
         <div className="QnA">
@@ -42,8 +56,7 @@ const Assessment = ({ attemptNo }) => {
                   value="1.1"
                   id="1.1"
                   onClick={(e) => {
-                    setAssessmentData(e.target.value);
-                    console.log(assessmentData);
+                    handleClick(e.target.value, e.target.checked);
                   }}
                 />
               </span>
@@ -58,7 +71,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="1.2"
                   id="1.2"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -72,7 +85,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="1.3"
                   id="1.3"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -90,7 +103,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="2.1"
                   id="2.1"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -104,7 +117,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="2.2"
                   id="2.2"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -118,7 +131,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="2.3"
                   id="2.3"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -136,7 +149,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="3.1"
                   id="3.1"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -150,7 +163,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="3.2"
                   id="3.2"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -164,7 +177,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="3.3"
                   id="3.3"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -182,7 +195,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="4.1"
                   id="4.1"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -199,7 +212,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="4.2"
                   id="4.2"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -213,7 +226,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="4.3"
                   id="4.3"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -231,7 +244,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="5.1"
                   id="5.1"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -245,7 +258,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="5.2"
                   id="5.2"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
@@ -259,7 +272,7 @@ const Assessment = ({ attemptNo }) => {
                   className="cb"
                   value="5.3"
                   id="5.3"
-                  onClick={(e) => setAssessmentData(e.target.value)}
+                  onClick={(e) => handleClick(e.target.value, e.target.checked)}
                 />
               </span>
               <span>
