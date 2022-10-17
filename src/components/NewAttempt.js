@@ -5,6 +5,7 @@ import AttemptSteps from "./AttemptSteps.json";
 import Record from "./Record";
 import Assessment from "./Assessment";
 import Reflective from "./Reflective";
+import RepeatTest from "./RepeatTest";
 
 const calculateAttemptNo = (scenarios, scenarioId) => {
   let attemptno = 1;
@@ -39,7 +40,6 @@ const NewAttempt = () => {
     const result = calculateAttemptNo(scenarios, params.scenarioId);
     setStepno(result.stepno);
     setAttemptNo(result.attemptno);
-
   }, []);
 
   switch (stepno) {
@@ -51,6 +51,8 @@ const NewAttempt = () => {
       return <Reflective />;
     case 3:
       return <Record />;
+    case 4:
+      return <RepeatTest />;
     default:
       return <Record />;
   }

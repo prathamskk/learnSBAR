@@ -268,9 +268,7 @@ const Register = () => {
                   </button>
                 </div>
               </form>
-              <br />
-              <br />
-              <br />
+
               <p className="aa">
                 Already registered?
                 <br />
