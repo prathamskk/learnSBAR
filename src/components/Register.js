@@ -10,8 +10,10 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import nurse_gang from "../images/nurse_reg.png";
 import "../styles/register.css";
 import logo from "../images/LearnSBAR (2) 2.png";
+import Spinner from "./Spinner";
 
-const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+const EMAIL_REGEX =
+  /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const MOBILE_REGEX = /^([0|+[0-9]{1,5})?([7-9][0-9]{9})$/;
 const REGISTER_URL = "/register";
@@ -36,6 +38,8 @@ const Register = () => {
   //const [matchPwd, setMatchPwd] = useState("");
   //const [validMatch, setValidMatch] = useState(false);
   //const [matchFocus, setMatchFocus] = useState(false);
+
+  const [SignUpState, setSignUpState] = useState("");
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
@@ -63,6 +67,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSignUpState("signing up");
     // if button enabled with JS hack
     const v1 = EMAIL_REGEX.test(email);
     // const v2 = PWD_REGEX.test(password);
@@ -81,9 +86,6 @@ const Register = () => {
           withCredentials: true,
         }
       );
-      // TODO: remove console.logs before deployment
-      console.log(JSON.stringify(response?.data));
-      //console.log(JSON.stringify(response))
       setSuccess(true);
       //clear state and controlled inputs
       setEmail("");
@@ -114,6 +116,8 @@ const Register = () => {
         </section>
       ) : (
         <section className="nurse_register">
+          {SignUpState === "signing up" ? <Spinner /> : ""}
+
           <div className="nurses_gang">
             <img src={nurse_gang} alt="nurses" />
           </div>

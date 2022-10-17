@@ -19,7 +19,7 @@ const Scenario = () => {
     <></>
   ) : (
     <div>
-      <div class="container">
+      <div className="container">
         <div className="scenariono">Scenario {params.scenarioId}</div>
         <div className="scenariono">
           {ScenariosList["scenario" + params.scenarioId].name}
@@ -32,9 +32,9 @@ const Scenario = () => {
             />
           </video>
         </div>
-        <label class="la">scenario explaination video</label>
+        <label className="la">scenario explaination video</label>
 
-        <div class="buttons">
+        <div className="buttons">
           <Link to={"/newattempt/" + params.scenarioId}>
             <button className="na">
               New <br />
@@ -42,7 +42,7 @@ const Scenario = () => {
             </button>
           </Link>
 
-          <a href="/submission" class="ps">
+          <a href="/submission" className="ps">
             Previous <br />
             Submissions
           </a>

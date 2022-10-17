@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import "../styles/login.css";
 import nurses from "../images/nurses_register.png";
 import logo from "../images/LearnSBAR (2) 2.png";
@@ -32,8 +32,6 @@ const Login = () => {
   }, []);
 
   useEffect(() => {
-    console.log(email, password);
-
     setErrMsg("");
   }, [email, password]);
 
@@ -50,7 +48,6 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
       setAuth({ email, password, roles, accessToken });
@@ -133,6 +130,13 @@ const Login = () => {
               <label htmlFor="persist">Trust This Device</label>
             </div>
           </form>
+          <div className="not_account">
+            <span>Do not have a account?</span>
+            &nbsp;&nbsp;
+            <span className="line">
+              <Link to="/register">Register here</Link>
+            </span>
+          </div>
         </div>
       </div>
     </section>

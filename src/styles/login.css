@@ -150,6 +150,10 @@ li {
   margin: 0 5px 2px 2px;
 }
 
+.not_account {
+  font-size: 0.9rem;
+}
+
 @media screen and (min-width: 600px) {
   .nurse_login {
     flex-direction: row;

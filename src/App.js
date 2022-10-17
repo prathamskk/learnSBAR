@@ -22,12 +22,12 @@ const ROLES = {
 function App() {
   return (
     <Routes>
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
+
+      <Route path="unauthorized" element={<Unauthorized />} />
       <Route path="/" element={<Layout />}>
         {/* public routes */}
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-
-        <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* we want to protect these routes */}
         <Route element={<PersistLogin />}>
@@ -37,7 +37,6 @@ function App() {
             <Route path="submission" element={<Submission />} />
             <Route path="/" element={<Scenarios />} />
             <Route path="record" element={<Record />} />
-            
           </Route>
 
           {/* <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
