@@ -7,8 +7,7 @@
 } */
 
 .audio_recording {
-  height: 60vh;
-  padding-top: 100px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -30,7 +29,7 @@
   color: #000;
   font-family: "Karla", sans-serif;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 8vw;
 }
 
 .micro_phone,

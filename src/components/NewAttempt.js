@@ -5,6 +5,7 @@ import AttemptSteps from "./AttemptSteps.json";
 import Record from "./Record";
 import Assessment from "./Assessment";
 import Reflective from "./Reflective";
+import useScenarios from "../hooks/useScenarios";
 
 const calculateAttemptNo = (scenarios, scenarioId) => {
   let attemptno = 1;
@@ -30,6 +31,11 @@ const calculateAttemptNo = (scenarios, scenarioId) => {
 };
 
 const NewAttempt = () => {
+  const refreshScenarios = useScenarios();
+  useEffect(async () => {
+    await refreshScenarios();
+  }, []);
+
   const [stepno, setStepno] = useState(0);
   const [attemptNo, setAttemptNo] = useState(0);
 
@@ -39,12 +45,22 @@ const NewAttempt = () => {
     const result = calculateAttemptNo(scenarios, params.scenarioId);
     setStepno(result.stepno);
     setAttemptNo(result.attemptno);
-
   }, []);
+
+  useEffect(() => {
+    console.log(scenarios, "stepno : ", stepno, "attemptno : ", attemptNo);
+  }, [stepno, attemptNo, scenarios]);
 
   switch (stepno) {
     case 0:
-      return <Record setStepno={setStepno} attemptNo={attemptNo} />;
+      return (
+        <Record
+          setStepno={setStepno}
+          attemptNo={attemptNo}
+          refreshScenarios={refreshScenarios}
+          calculateAttemptNo={calculateAttemptNo}
+        />
+      );
     case 1:
       return <Assessment attemptNo={attemptNo} />;
     case 2:

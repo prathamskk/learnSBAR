@@ -1,5 +1,4 @@
 import "../styles/navbar.css";
-import "../styles/reset.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
