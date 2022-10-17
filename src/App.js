@@ -12,6 +12,7 @@ import Submission from "./components/Submission";
 import Scenario from "./components/Scenario";
 import NewAttempt from "./components/NewAttempt";
 import Record from "./components/Record";
+import Reflective from "./components/Reflective";
 
 const ROLES = {
   User: 2001,
@@ -37,6 +38,7 @@ function App() {
             <Route path="submission" element={<Submission />} />
             <Route path="/" element={<Scenarios />} />
             <Route path="record" element={<Record />} />
+            <Route path="reflective" element={<Reflective />} />
           </Route>
 
           {/* <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
