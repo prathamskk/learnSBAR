@@ -24,8 +24,8 @@ const Scenario = () => {
             controlsList="play"
           >
             <source
-            //   src={ScenariosList["scenario" + params.scenarioId].url}
-            //   type="video/mp4"
+              src={ScenariosList["scenario" + params.scenarioId].exemplarUrl}
+              type="video/mp4"
             />
           </video>
         </div>
