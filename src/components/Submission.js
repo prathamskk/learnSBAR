@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import "../styles/submission.css";
+import useScenarios from "../hooks/useScenarios";
 
 const Submission = () => {
   const { scenarios } = useAuth();
+  const refreshScenarios = useScenarios();
 
   useEffect(() => {
+    refreshScenarios();
   }, []);
 
   return (
