@@ -144,10 +144,10 @@ const Register = () => {
             <div className="logo">
               <img src={logo} alt="learnSBAR" />
             </div>
-            <h1>Register</h1>
+            <h1 className="regi">Register</h1>
             <form onSubmit={handleSubmit} className="rform">
               <div className="ui">
-                <label htmlFor="username" className="verify">
+                <label htmlFor="username" className="cross">
                   <FontAwesomeIcon
                     icon={faCheck}
                     className={validEmail ? "valid" : "hide"}
@@ -162,7 +162,7 @@ const Register = () => {
                   <input
                     type="text"
                     id="username"
-                    placeholder="Enter your username"
+                    placeholder="Enter your email address"
                     ref={userRef}
                     autoComplete="off"
                     onChange={(e) => setEmail(e.target.value)}
@@ -183,16 +183,12 @@ const Register = () => {
                     }
                   >
                     <FontAwesomeIcon icon={faInfoCircle} />
-                    4 to 24 characters.
-                    <br />
-                    Must begin with a letter.
-                    <br />
-                    Letters, numbers, underscores, hyphens allowed.
+                    Please enter a valid email address
                   </p>
                 </div>
               </div>
               <div className="ui">
-                <label htmlFor="password" className="verify">
+                <label htmlFor="password" className="cross">
                   <FontAwesomeIcon
                     icon={faCheck}
                     className={validPwd ? "valid" : "hide"}
@@ -240,8 +236,8 @@ const Register = () => {
               </div>
 
               <div className="mobile-field">
-                <div className="ui">
-                  <label htmlFor="mobile_no">
+                <div className="number">
+                  <label htmlFor="mobile_no" className="cross">
                     <FontAwesomeIcon
                       icon={faCheck}
                       className={validMobile && mobile_no ? "valid" : "hide"}
@@ -278,7 +274,7 @@ const Register = () => {
               </div>
             </form>
           </div>
-
+          <br />
           <p className="aa">
             Already registered?
             <br />
