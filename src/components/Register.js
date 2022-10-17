@@ -123,7 +123,13 @@ const Register = () => {
             options={defaultOptions}
             height={200}
             width={200}
-            style={{ position: "absolute", "z-index": "10" }}
+            style={{
+              position: "absolute",
+              "z-index": "10",
+              left: "30vw",
+              display: "block",
+            }}
+            className="correct"
           />
         ) : (
           ""
