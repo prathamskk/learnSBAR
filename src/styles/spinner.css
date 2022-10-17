@@ -72,3 +72,9 @@
     transform: translate(24px, 0);
   }
 }
+
+@media screen and (min-width: 600px) {
+  .spinner {
+    left: 48%;
+  }
+}
