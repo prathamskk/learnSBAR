@@ -1,6 +1,7 @@
 {
   "scenario1": {
     "name": "Helena Jones",
-    "url": "/videos/scenario_1.mp4"
+    "url": "/videos/scenario_1.mp4",
+    "exemplarUrl" : "/videos/professionalHandover.mp4"
   }
 }
