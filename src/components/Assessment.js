@@ -53,7 +53,6 @@ const Assessment = ({
 
   useEffect(() => {
     const result = calculateAttemptNo(scenarios, params.scenarioId);
-    console.log(result);
     setStepno(result.stepno);
   }, [scenarios]);
 

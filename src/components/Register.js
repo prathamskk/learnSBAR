@@ -109,7 +109,6 @@ const Register = () => {
       setTimeout(() => navigate("/login"), 4000);
     } catch (err) {
       setSignUpState("");
-      console.log(err.response.data.message);
       setErrMsg(err.response.data.message);
       errRef.current.focus();
     }

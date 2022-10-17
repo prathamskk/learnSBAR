@@ -11,8 +11,6 @@ import { Routes, Route } from "react-router-dom";
 import Submission from "./components/Submission";
 import Scenario from "./components/Scenario";
 import NewAttempt from "./components/NewAttempt";
-import Record from "./components/Record";
-import Reflective from "./components/Reflective";
 import RepeatTest from "./components/RepeatTest";
 
 const ROLES = {
@@ -35,11 +33,10 @@ function App() {
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
             <Route path="scenario/:scenarioId" element={<Scenario />} />
+            <Route path="scenario/repeat/:scenarioId" element={<RepeatTest />} />
             <Route path="newattempt/:scenarioId" element={<NewAttempt />} />
             <Route path="submission" element={<Submission />} />
             <Route path="/" element={<Scenarios />} />
-            <Route path="record" element={<Record />} />
-            <Route path="repeattest" element={<RepeatTest />} />
           </Route>
 
           {/* <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>

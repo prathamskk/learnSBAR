@@ -26,7 +26,6 @@ const Reflective = ({
       } else {
         delete prev[questionId];
       }
-      console.log(prev);
       return prev;
     });
   };
@@ -34,7 +33,6 @@ const Reflective = ({
   const handleTextAreaSubmit = (value) => {
     setFormData((prev) => {
       prev["2"] = value;
-      console.log(prev);
       return prev;
     });
   };
@@ -61,7 +59,6 @@ const Reflective = ({
 
   useEffect(() => {
     const result = calculateAttemptNo(scenarios, params.scenarioId);
-    console.log(result);
     setStepno(result.stepno);
   }, [scenarios]);
 
@@ -71,7 +68,7 @@ const Reflective = ({
         <div>Fill Self Reflective Questions</div>
       </div>
       <div>
-        <form onSubmit="">
+        <form>
           <div className="reflective_1">
             <div className="quest">
               <span>1.</span>&nbsp;

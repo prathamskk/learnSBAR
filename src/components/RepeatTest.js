@@ -3,9 +3,15 @@ import patient from "../images/patient_image.png";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import ScenariosList from "./scenariosList.json";
 import { useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
 const Scenario = () => {
+  const { scenarios } = useAuth();
   const navigate = useNavigate();
   const params = useParams();
+  // useEffect(() => {
+  //   const result = calculateAttemptNo(scenarios, params.scenarioId);
+  //   setStepno(result.stepno);
+  // }, [scenarios]);
 
   return (
     <div>
@@ -22,12 +28,13 @@ const Scenario = () => {
           watch exemplar SBAR briefing pre-recorder <br /> by professional
         </label>
         <div className="buttons">
-          <Link to={"/newattempt/" + params.scenarioId}>
-            <button className="na">
-              New
-              <br />
-              Attempt
-            </button>
+         
+          <Link to="/newattempt/1">
+          <button className="na" >
+            New
+            <br />
+            Attempt
+          </button>
           </Link>
           <Link to="/">
             <button className="ps">

@@ -21,15 +21,17 @@ const calculateAttemptNo = (scenarios, scenarioId) => {
     const lastattempt =
       scenarios["scenario" + scenarioId]["attempt" + attemptno];
     for (let stepno = 0; stepno < AttemptSteps.length; stepno++) {
+      if (stepno === 4) {
+        break;
+      }
       if (lastattempt[AttemptSteps[stepno]] === undefined) {
         return { stepno: stepno, attemptno: attemptno };
       }
     }
 
-    ++attemptno;
+    attemptno++;
     attempt = "attempt" + attemptno;
   }
-
   return { stepno: 0, attemptno: attemptno };
 };
 
@@ -106,7 +108,14 @@ const NewAttempt = () => {
         />
       );
     case 4:
-      return <RepeatTest />;
+      return (
+        <RepeatTest
+          setStepno={setStepno}
+          attemptNo={attemptNo}
+          refreshScenarios={refreshScenarios}
+          calculateAttemptNo={calculateAttemptNo}
+        />
+      );
 
     default:
       return <Record />;

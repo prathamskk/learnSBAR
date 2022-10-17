@@ -1,7 +1,7 @@
 import "../styles/record.css";
 import MicRecorder from "mic-recorder-to-mp3";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
@@ -21,7 +21,7 @@ const Record2 = ({
   const [isrecording, setIsrecording] = useState(false);
   const [isRecorded, setIsRecorded] = useState(false);
   const params = useParams();
-
+  const navigate = useNavigate();
   //check for browser audio and video permissions
   useEffect(() => {
     navigator.getUserMedia(
@@ -124,7 +124,9 @@ const Record2 = ({
   useEffect(() => {
     const result = calculateAttemptNo(scenarios, params.scenarioId);
     console.log(result);
-    setStepno(result.stepno);
+    if (result.stepno === 0) {
+      navigate("/scenario/repeat/" + params.scenarioId);
+    }
   }, [scenarios]);
 
   return (
