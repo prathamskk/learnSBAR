@@ -55,7 +55,7 @@
   display: flex;
 }
 
-.text_box textarea {
+.text_box input {
   border: 2px solid #585858;
   outline: none;
   font-size: 1rem;
