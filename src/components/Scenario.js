@@ -42,10 +42,10 @@ const Scenario = () => {
             </button>
           </Link>
 
-          <a href="/submission" className="ps">
+          <Link to="/submission" className="ps">
             Previous <br />
             Submissions
-          </a>
+          </Link>
         </div>
       </div>
     </div>

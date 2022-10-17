@@ -7,9 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../api/axios";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import nurse_gang from "../images/nurse_reg.png";
 import "../styles/register.css";
-import logo from "../images/LearnSBAR (2) 2.png";
 import Spinner from "./Spinner";
 import Lottie from "react-lottie";
 import correctLogo from "./correct.json";
@@ -135,7 +133,7 @@ const Register = () => {
         )}
         {SignUpState === "signing up" ? <Spinner /> : ""}
         <div className="nurses_gang">
-          <img src={nurse_gang} alt="nurses" />
+          <img src="/images/nurse_reg.png" alt="nurses" />
         </div>
         <div className="nurse_reg">
           <p
@@ -147,7 +145,7 @@ const Register = () => {
           </p>
           <div className="reg-wrapper">
             <div className="logo">
-              <img src={logo} alt="learnSBAR" />
+              <img src="/images/learnSbarLOGO.png" alt="learnSBAR" />
             </div>
             <h1 className="regi">Register</h1>
             <form onSubmit={handleSubmit} className="rform">

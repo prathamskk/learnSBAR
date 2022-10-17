@@ -49,8 +49,8 @@ const NewAttempt = () => {
   const refreshScenarios = useScenarios();
 
   //refreshScenarios
-  useEffect(async () => {
-    await refreshScenarios();
+  useEffect(() => {
+    refreshScenarios();
   }, []);
 
   const [stepno, setStepno] = useState(0);
@@ -65,11 +65,7 @@ const NewAttempt = () => {
     setAttemptNo(result.attemptno);
   }, []);
 
-  //debugging statement
-  useEffect(() => {
-    console.log(scenarios, "stepno : ", stepno, "attemptno : ", attemptNo);
-  }, [stepno, attemptNo, scenarios]);
-
+  
   switch (stepno) {
     case 0:
       return (

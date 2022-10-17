@@ -1,5 +1,4 @@
 import "../styles/scenario.css";
-import patient from "../images/patient_image.png";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import ScenariosList from "./scenariosList.json";
 import { useEffect, useState } from "react";
@@ -17,7 +16,7 @@ const Scenario = () => {
     <div>
       <div className="container">
         <div className="video">
-          <video poster={patient} controls controlsList="play">
+          <video poster="/images/patient_image.png" controls controlsList="play">
             <source
             //   src={ScenariosList["scenario" + params.scenarioId].url}
             //   type="video/mp4"
