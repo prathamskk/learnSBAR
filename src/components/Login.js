@@ -32,8 +32,6 @@ const Login = () => {
   }, []);
 
   useEffect(() => {
-    console.log(email, password);
-
     setErrMsg("");
   }, [email, password]);
 
@@ -50,7 +48,6 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
       setAuth({ email, password, roles, accessToken });

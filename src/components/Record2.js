@@ -1,4 +1,4 @@
-import "../styles/record.css";
+import "./record.css";
 import "../styles/reset.css";
 import {
   faMicrophone,
@@ -12,6 +12,7 @@ import { Navigate, useParams } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
+import "./record.css";
 
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
@@ -26,6 +27,7 @@ const Record = ({ setStepno, attemptNo }) => {
   const params = useParams();
 
   useEffect(() => {
+    console.log(attemptNo);
     navigator.getUserMedia(
       { audio: true, video: false },
       () => {
@@ -47,6 +49,7 @@ const Record = ({ setStepno, attemptNo }) => {
         .start()
         .then(() => {
           setIsrecording(true);
+          console.log("started recording");
         })
         .catch((e) => console.log(e));
     }
@@ -62,6 +65,7 @@ const Record = ({ setStepno, attemptNo }) => {
         setIsrecording(false);
         var d = new Date();
         var file = new File([blob], d.valueOf(), { type: "audio/wav" });
+        console.log(file);
         handleaudiofile(file);
       })
       .catch((e) => console.log("We could not retrieve your message"));
@@ -93,7 +97,10 @@ const Record = ({ setStepno, attemptNo }) => {
           .put(signedRequest, file, options)
           .then((result) => {
             setAudio(url);
+            console.log(audio);
             console.log("audio uploaded");
+            console.log("scenario" + params.scenarioId);
+            console.log("attempt" + attemptNo);
 
             axiosPrivate
               .post(
@@ -106,6 +113,7 @@ const Record = ({ setStepno, attemptNo }) => {
                 }
               )
               .then((response) => {
+                console.log("successfully added to dynamodb");
                 setStepno(1);
               })
               .catch((error) => {
@@ -127,11 +135,13 @@ const Record = ({ setStepno, attemptNo }) => {
         <div className="rounded_mic" onClick={() => start()}>
           <div className="mic">
             <button className="micro_phone">
-              <i className="bi bi-mic-fill"></i>
+              <i class="bi bi-mic-fill"></i>
             </button>
           </div>
         </div>
-        <div className="sbar_briefing">Record SBAR Briefing</div>
+        <div className="sbar_briefing">
+          Record SBAR Briefing for the second time with the improvements
+        </div>
         {isrecording && (
           <div>
             <button onClick={stop} type="button" className="controls">

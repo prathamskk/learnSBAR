@@ -16,7 +16,6 @@ const Assessment = ({ attemptNo }) => {
   }, []);
 
   const handleClick = (data, isChecked) => {
-    console.log(isChecked);
     setAssessmentFormData((prev) => {
       if (isChecked) {
         prev[data] = data;
@@ -25,7 +24,6 @@ const Assessment = ({ attemptNo }) => {
       }
       return prev;
     });
-    console.log(assessmentFormData);
   };
 
   return (
