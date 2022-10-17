@@ -4,57 +4,74 @@ import { useState } from "react";
 const Reflective = () => {
   const [formData, setFormData] = useState({});
 
+
   return (
-    <div>
-      <div>
+    <div className="reflective_qns_list">
+      <div className="hero_title">
         <div>Fill Self Reflective Questions</div>
       </div>
       <div>
         <form onSubmit="">
           <div className="reflective_1">
-            <div className="quest_1">
+            <div className="quest">
+              <span>1.</span>&nbsp;
               <div>What you did well?</div>
             </div>
             <div className="options">
-              <div>
+              <div className="option">
                 <input
                   type="checkbox"
                   value="Information transfer was clear and in a concise way"
                 />
-                <div>Information transfer was clear and in a concise way</div>
+                <div className="options_value">
+                  Information transfer was clear and in a concise way
+                </div>
               </div>
-              <div>
+              <div className="option">
                 <input
                   type="checkbox"
                   value="Did not missed any point to convey related to patient"
                 />
-                <div>Did not missed any point to convey related to patient</div>
+                <div className="options_value">
+                  Did not missed any point to convey related to patient
+                </div>
               </div>
-              <div>
+              <div className="option">
                 <input
                   type="checkbox"
                   value="Emphasized important points while conveying"
                 />
-                <div>Emphasized important points while conveying</div>
+                <div className="options_value">
+                  Emphasized important points while conveying
+                </div>
               </div>
-              <div>
-                <input type="checkbox" value="Followed SBAR technique " />
-                <div>Emphasized important points while conveying</div>
+              <div className="option">
+                <input type="checkbox" value="Followed SBAR technique" />
+                <div className="options_value">Followed SBAR technique</div>
               </div>
-              <div>
+              <div className="option">
                 <input
                   type="checkbox"
                   value="Pacing was appropriate (neither too fast or slow)"
                 />
-                <div>Pacing was appropriate (neither too fast or slow)</div>
+                <div className="options_value">
+                  Pacing was appropriate (neither too fast or slow)
+                </div>
               </div>
             </div>
           </div>
           <div className="reflective_2">
-            <div className="quest_1">
+            <div className="quest">
+              <span>2.</span>&nbsp;
               <div>What you thought could be improved?</div>
             </div>
-            <div className="options"></div>
+            <div className="text_box">
+              <textarea
+                rows="5"
+                cols="33"
+                placeholder="Enter your thoughts..."
+              ></textarea>
+            </div>
           </div>
         </form>
       </div>

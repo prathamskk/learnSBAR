@@ -1,3 +1,16 @@
+.reflective_qns_list {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero_title {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
 .next-btn-reflect {
   display: flex;
   justify-content: center;
@@ -12,11 +25,49 @@
   height: 40px;
   color: #fff;
   border-radius: 5px;
-  position: absolute;
-  bottom: -200px;
+
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Karla", sans-serif;
+}
+
+.reflective_1,
+.reflective_2 {
+  padding-top: 20px;
+}
+
+.quest {
+  display: flex;
+}
+
+.quest div,
+.quest span {
+  font-size: 1.05rem;
+}
+
+.options_value {
+  font-size: 0.8rem;
+}
+
+.option {
+  display: flex;
+}
+
+.text_box textarea {
+  border: 2px solid #585858;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 200;
+  padding: 8px;
+  width: 300px;
+  height: auto;
+  resize: vertical;
+}
+
+@media screen and (min-width: 600px) {
+  .next-reflect {
+    bottom: 0;
+  }
 }
