@@ -137,7 +137,7 @@ const Register = () => {
                 />
               </label>
               <div className="inputContainer">
-                {/* <i class="fa-solid fa-user"></i> */}
+                {/* <i className="fa-solid fa-user"></i> */}
                 <input
                   type="text"
                   id="username"
@@ -180,7 +180,7 @@ const Register = () => {
                 />
               </label>
               <div className="inputContainer">
-                {/* <i class="fa-solid fa-lock"></i> */}
+                {/* <i className="fa-solid fa-lock"></i> */}
                 <input
                   className="password"
                   type="password"
@@ -225,7 +225,7 @@ const Register = () => {
                 />
               </label>
               <div>
-                <i class="fa-solid fa-lock"></i>
+                <i className="fa-solid fa-lock"></i>
                 <input
                   type="password"
                   id="confirm_pwd"
@@ -260,7 +260,7 @@ const Register = () => {
                 />
               </label>
               <div className="mobile-field">
-                {/* <i class="fa-solid fa-mobile"></i> */}
+                {/* <i className="fa-solid fa-mobile"></i> */}
                 <select name="codes" id="codes" required>
                   <option value="india">+91</option>
                   <option value="usa">+1</option>
