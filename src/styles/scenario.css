@@ -47,6 +47,14 @@ video {
   font-size: 14px;
   font-weight: 700;
 }
+
+.la2{
+  color: #797272;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
 .buttons {
   font-family: "Karla";
   padding-top: 4rem;

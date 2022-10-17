@@ -98,7 +98,7 @@ const Login = () => {
           >
             {errMsg}
           </p>
-          <h1>Sign In</h1>
+          <h1 className="logi">Sign In</h1>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -127,7 +127,7 @@ const Login = () => {
                 onChange={togglePersist}
                 checked={persist}
               />
-              <label htmlFor="persist">Trust This Device</label>
+              <label htmlFor="persist">Keep Me Logged-In</label>
             </div>
           </form>
           <div className="not_account">
