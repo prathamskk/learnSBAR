@@ -1,4 +1,4 @@
-import "./record.css";
+import "../styles/record.css";
 import "../styles/reset.css";
 import {
   faMicrophone,
@@ -12,7 +12,6 @@ import { Navigate, useParams } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
-import "./record.css";
 
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
