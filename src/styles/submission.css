@@ -36,6 +36,7 @@
   text-transform: capitalize;
   font-weight: 800;
   font-size: 1.1rem;
+  color: #fff;
 }
 
 .attempts {
@@ -57,6 +58,10 @@
   background-color: white;
   border-radius: 8px;
   color: #383838;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 60vw;
 }
 
 .submission-time {
@@ -67,4 +72,25 @@
 
 #time {
   color: #707070;
+}
+
+.view_more {
+  color: #fff;
+  background-color: #6c7493;
+  padding: 10px;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.no_submissions {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .submissionNo {
+    width: 100%;
+    height: 15vw;
+  }
 }

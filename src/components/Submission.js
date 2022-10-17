@@ -16,10 +16,13 @@ const Submission = () => {
       <div className="title">
         <h3 id="submission_title">Previous Submissions</h3>
       </div>
+      {}
       <div className="submission_container">
         <div className="scenario_lists">
           <div className="scenarios">
-            {scenarios !== {} &&
+            {scenarios ? (
+              <div className="no_submissions">No Submissions yet</div>
+            ) : (
               Object.keys(scenarios).map((keyName, i) => (
                 <div className="submission">
                   <div className="scenarioNo">{keyName}</div>
@@ -28,11 +31,10 @@ const Submission = () => {
                       <div className="submissionNo">
                         <div className="submission-time">
                           <h2 className="attempts">{attempt}</h2>
-                          <div id="time">2 hours ago</div>
                         </div>
                         {Object.keys(scenarios[keyName][attempt]).map(
                           (data) => {
-                            return (
+                            return data === "rec2" ? (
                               <div className="latest_audio">
                                 <audio controls>
                                   <source
@@ -41,19 +43,19 @@ const Submission = () => {
                                   ></source>
                                 </audio>
                               </div>
+                            ) : (
+                              ""
                             );
                           }
                         )}
-                        <div className="view_more"></div>
+                        <div className="view_more">View more</div>
                       </div>
                     );
                   })}
                 </div>
-              ))}
+              ))
+            )}
           </div>
-          <div></div>
-          <div></div>
-          <div></div>
         </div>
       </div>
     </div>
