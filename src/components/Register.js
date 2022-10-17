@@ -80,9 +80,6 @@ const Register = () => {
           withCredentials: true,
         }
       );
-      // TODO: remove console.logs before deployment
-      console.log(JSON.stringify(response?.data));
-      //console.log(JSON.stringify(response))
       setSuccess(true);
       //clear state and controlled inputs
       setEmail("");
@@ -126,16 +123,7 @@ const Register = () => {
             </p>
             <h1>Register</h1>
             <form onSubmit={handleSubmit} className="rform">
-              <label htmlFor="username">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validEmail ? "valid" : "hide"}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={validEmail || !email ? "hide" : "invalid"}
-                />
-              </label>
+             
               <div className="inputContainer">
                 {/* <i className="fa-solid fa-user"></i> */}
                 <input
@@ -152,6 +140,16 @@ const Register = () => {
                   onFocus={() => setEmailFocus(true)}
                   onBlur={() => setEmailFocus(false)}
                 />
+                 <label htmlFor="username">
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className={validEmail ? "valid" : "hide"}
+                />
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className={validEmail || !email ? "hide" : "invalid"}
+                />
+              </label>
 
                 <p
                   id="uidnote"

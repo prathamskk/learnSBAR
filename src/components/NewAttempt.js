@@ -8,7 +8,6 @@ import Reflective from "./Reflective";
 
 const calculateAttemptNo = (scenarios, scenarioId) => {
   let attemptno = 1;
-  console.log(scenarios);
 
   let attempt = "attempt" + attemptno;
   let scenariokey = "scenario" + scenarioId;
@@ -18,8 +17,6 @@ const calculateAttemptNo = (scenarios, scenarioId) => {
     const lastattempt =
       scenarios["scenario" + scenarioId]["attempt" + attemptno];
     for (let stepno = 0; stepno < AttemptSteps.length; stepno++) {
-      console.log(stepno);
-      console.log(lastattempt[AttemptSteps[stepno]]);
       if (lastattempt[AttemptSteps[stepno]] === undefined) {
         return { stepno: stepno, attemptno: attemptno };
       }
@@ -43,15 +40,10 @@ const NewAttempt = () => {
     setStepno(result.stepno);
     setAttemptNo(result.attemptno);
 
-    console.log(
-      "FINAL ATTEMPT NO : ",
-      calculateAttemptNo(scenarios, params.scenarioId)
-    );
   }, []);
 
   switch (stepno) {
     case 0:
-      console.log("hello", setStepno);
       return <Record setStepno={setStepno} attemptNo={attemptNo} />;
     case 1:
       return <Assessment attemptNo={attemptNo} />;

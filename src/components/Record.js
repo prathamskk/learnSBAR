@@ -27,7 +27,6 @@ const Record = ({ setStepno, attemptNo }) => {
   const params = useParams();
 
   useEffect(() => {
-    console.log(attemptNo);
     navigator.getUserMedia(
       { audio: true, video: false },
       () => {
@@ -49,7 +48,6 @@ const Record = ({ setStepno, attemptNo }) => {
         .start()
         .then(() => {
           setIsrecording(true);
-          console.log("started recording");
         })
         .catch((e) => console.log(e));
     }
@@ -65,7 +63,6 @@ const Record = ({ setStepno, attemptNo }) => {
         setIsrecording(false);
         var d = new Date();
         var file = new File([blob], d.valueOf(), { type: "audio/wav" });
-        console.log(file);
         handleaudiofile(file);
       })
       .catch((e) => console.log("We could not retrieve your message"));
@@ -97,10 +94,7 @@ const Record = ({ setStepno, attemptNo }) => {
           .put(signedRequest, file, options)
           .then((result) => {
             setAudio(url);
-            console.log(audio);
             console.log("audio uploaded");
-            console.log("scenario" + params.scenarioId);
-            console.log("attempt" + attemptNo);
 
             axiosPrivate
               .post(
@@ -113,7 +107,6 @@ const Record = ({ setStepno, attemptNo }) => {
                 }
               )
               .then((response) => {
-                console.log("successfully added to dynamodb");
                 setStepno(1);
               })
               .catch((error) => {

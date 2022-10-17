@@ -6,7 +6,6 @@ const Submission = () => {
   const { scenarios } = useAuth();
 
   useEffect(() => {
-    console.log(scenarios);
   }, []);
 
   return (
