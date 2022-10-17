@@ -6,10 +6,10 @@ import { useEffect } from "react";
 
 const Scenarios = () => {
   const refreshScenarios = useScenarios();
-  useEffect(()=>{
+  useEffect(() => {
     refreshScenarios();
-  },[])
- 
+  }, []);
+
   return (
     <div className="scenarios_list">
       <div className="card_container">
@@ -20,49 +20,45 @@ const Scenarios = () => {
           </div>
         </div>
         <div className="container_div">
-          <div className="card">
+          <Link to="/scenario/1" className="card">
             <img src={s1logo} className="s1" alt="s1_pic"></img>
             <div className="sch">
-              <h3 className="schead">Scenario 1</h3>
+              <h3 className="schead">Scenario 1 : Mrs Helena Jones</h3>
               <div className="scpara">
-                <a href="/scenario/1" className="card_link">
+                <div className="card_link">
                   This scenario describes about the patient’s sufferings she is
                   currently going through.
-                </a>
+                </div>
               </div>
             </div>
             <div className="gitem layout">Pass</div>
-          </div>
-
-          <div className="card">
-            <img src={s1logo} className="s1" alt="sbar_pic" />
-
+          </Link>
+          <Link to="/scenario/2" className="card">
+            <img src={s1logo} className="s1" alt="s1_pic"></img>
             <div className="sch">
               <h3 className="schead">Scenario 2</h3>
-              <div className="scpara">.</div>
+              <div className="scpara">
+                <div className="card_link">
+                  This scenario describes about the patient’s sufferings she is
+                  currently going through.
+                </div>
+              </div>
             </div>
             <div className="gitem layout">Pass</div>
-          </div>
-          <div className="card">
-            {/* <div> */}
-            <img src={s1logo} alt="logo" className="s1"></img>
-            {/* </div> */}
+          </Link>
+          <Link to="/scenario/3" className="card">
+            <img src={s1logo} className="s1" alt="s1_pic"></img>
             <div className="sch">
               <h3 className="schead">Scenario 3</h3>
-              <div className="scpara">.</div>
+              <div className="scpara">
+                <div className="card_link">
+                  This scenario describes about the patient’s sufferings she is
+                  currently going through.
+                </div>
+              </div>
             </div>
             <div className="gitem layout">Pass</div>
-          </div>
-          <div className="card">
-            {/* <div> */}
-            <img src={s1logo} alt="logo" className="s1"></img>
-            {/* </div> */}
-            <div className="sch">
-              <h3 className="schead">Scenario 4</h3>
-              <div className="scpara">.</div>
-            </div>
-            <div className="gitem layout">Pass</div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

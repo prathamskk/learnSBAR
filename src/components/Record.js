@@ -1,21 +1,19 @@
 import "../styles/record.css";
-import "../styles/reset.css";
-import {
-  faMicrophone,
-  faMicrophoneSlash,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MicRecorder from "mic-recorder-to-mp3";
 import React, { useState, useEffect } from "react";
-import { Navigate, useParams } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 
 const audioRecorder = new MicRecorder({ bitRate: 128 });
 
-const Record = ({ setStepno, attemptNo }) => {
+const Record = ({
+  setStepno,
+  attemptNo,
+  refreshScenarios,
+  calculateAttemptNo,
+}) => {
   const { scenarios } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const [isblocked, setIsblocked] = useState(false);
@@ -106,7 +104,7 @@ const Record = ({ setStepno, attemptNo }) => {
                 }
               )
               .then((response) => {
-                setStepno(1);
+                refreshScenarios();
               })
               .catch((error) => {
                 alert("ERROR " + JSON.stringify(error));
@@ -120,6 +118,12 @@ const Record = ({ setStepno, attemptNo }) => {
         alert(JSON.stringify(error));
       });
   };
+
+  useEffect(() => {
+    const result = calculateAttemptNo(scenarios, params.scenarioId);
+    console.log(result);
+    setStepno(result.stepno);
+  }, [scenarios]);
 
   return (
     <div>
@@ -139,17 +143,6 @@ const Record = ({ setStepno, attemptNo }) => {
             </button>
           </div>
         )}
-      </div>
-      <div className="next-btn">
-        <a
-          href="/assessment"
-          className={isRecorded ? "next" : "disabled_next"}
-          onClick={
-            isRecorded ? (event) => event.preventDefault() : "/assessment"
-          }
-        >
-          Next
-        </a>
       </div>
     </div>
   );

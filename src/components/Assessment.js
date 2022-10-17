@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../styles/assessment.css";
-import "../styles/reset.css";
+
 import { useState } from "react";
 import useScenarios from "../hooks/useScenarios";
 import useAuth from "../hooks/useAuth";
@@ -46,7 +46,7 @@ const Assessment = ({ attemptNo }) => {
         <div className="QnA">
           <div className="Q1">
             <div className="Qhead">Identify</div>
-            <label for="1.1" className="selbox">
+            <label htmlFor="1.1" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -62,7 +62,7 @@ const Assessment = ({ attemptNo }) => {
                 <label>Name</label>
               </span>
             </label>
-            <label for="1.2" className="selbox">
+            <label htmlFor="1.2" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -76,7 +76,7 @@ const Assessment = ({ attemptNo }) => {
                 <label>Position/Professional Title</label>
               </span>
             </label>
-            <label for="1.3" className="selbox">
+            <label htmlFor="1.3" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -94,7 +94,7 @@ const Assessment = ({ attemptNo }) => {
           {/* <-- --> */}
           <div className="Q2">
             <div className="Qhead">Situation</div>
-            <label for="2.1" className="selbox">
+            <label htmlFor="2.1" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -108,7 +108,7 @@ const Assessment = ({ attemptNo }) => {
                 <label>Patient by name and age</label>
               </span>
             </label>
-            <label for="2.2" className="selbox">
+            <label htmlFor="2.2" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -122,7 +122,7 @@ const Assessment = ({ attemptNo }) => {
                 <label>Diagnosis or cheif complaint</label>
               </span>
             </label>
-            <label for="2.3" className="selbox">
+            <label htmlFor="2.3" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -140,7 +140,7 @@ const Assessment = ({ attemptNo }) => {
           {/* <-- --> */}
           <div className="Q3">
             <div className="Qhead">Background & Assessment</div>
-            <label for="3.1" className="selbox">
+            <label htmlFor="3.1" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -154,7 +154,7 @@ const Assessment = ({ attemptNo }) => {
                 <label>Relevant Past Medical History</label>
               </span>
             </label>
-            <label for="3.2" className="selbox">
+            <label htmlFor="3.2" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -168,7 +168,7 @@ const Assessment = ({ attemptNo }) => {
                 <label>Relevant assessment data</label>
               </span>
             </label>
-            <label for="3.3" className="selbox">
+            <label htmlFor="3.3" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -186,7 +186,7 @@ const Assessment = ({ attemptNo }) => {
           {/* <-- --> */}
           <div className="Q4">
             <div className="Qhead">Recommendation & Repeat</div>
-            <label for="4.1" className="selbox">
+            <label htmlFor="4.1" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -203,7 +203,7 @@ const Assessment = ({ attemptNo }) => {
                 </label>
               </span>
             </label>
-            <label for="4.2" className="selbox">
+            <label htmlFor="4.2" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -217,7 +217,7 @@ const Assessment = ({ attemptNo }) => {
                 <label>Provides timeframe/urgency for action</label>
               </span>
             </label>
-            <label for="4.3" className="selbox">
+            <label htmlFor="4.3" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -235,7 +235,7 @@ const Assessment = ({ attemptNo }) => {
           {/* <-- --> */}
           <div className="Q5">
             <div className="Qhead">Order & Accuracy</div>
-            <label for="5.1" className="selbox">
+            <label htmlFor="5.1" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -249,7 +249,7 @@ const Assessment = ({ attemptNo }) => {
                 <label>Correct Order/Sequence</label>
               </span>
             </label>
-            <label for="5.2" className="selbox">
+            <label htmlFor="5.2" className="selbox">
               <span>
                 <input
                   type="checkbox"
@@ -263,7 +263,7 @@ const Assessment = ({ attemptNo }) => {
                 <label>Accurate Data Reported</label>
               </span>
             </label>
-            <label for="5.3" className="selbox">
+            <label htmlFor="5.3" className="selbox">
               <span>
                 <input
                   type="checkbox"
