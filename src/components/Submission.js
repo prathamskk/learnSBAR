@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import "../styles/submission.css";
 import useScenarios from "../hooks/useScenarios";
+import { Link } from "react-router-dom";
 
 const Submission = () => {
   const { scenarios } = useAuth();
@@ -34,19 +35,39 @@ const Submission = () => {
                       </div>
                       {Object.keys(scenarios[keyName][attempt]).map((data) => {
                         return data === "rec2" ? (
-                          <div className="latest_audio">
-                            <audio controls>
-                              <source
-                                src={scenarios[keyName][attempt][data]}
-                                type="audio/mp3"
-                              ></source>
-                            </audio>
+                          <div>
+                            <div className="latest_audio">
+                              <audio controls>
+                                <source
+                                  src={scenarios[keyName][attempt][data]}
+                                  type="audio/mp3"
+                                ></source>
+                              </audio>
+                            </div>
+                            <div className="view_more">
+                              <Link
+                                to={"/submission/" + attempt}
+                                state={{
+                                  scenarioNo: keyName,
+                                  attempt: attempt,
+                                  recording: {
+                                    rec1: scenarios[keyName][attempt]["rec1"],
+                                    rec2: scenarios[keyName][attempt]["rec2"],
+                                  },
+                                  assessment: {
+                                    ass1: scenarios[keyName][attempt]["ass1"],
+                                    ass2: scenarios[keyName][attempt]["ass2"],
+                                  },
+                                }}
+                              >
+                                View more
+                              </Link>
+                            </div>
                           </div>
                         ) : (
                           ""
                         );
                       })}
-                      <div className="view_more">View more</div>
                     </div>
                   );
                 })}
