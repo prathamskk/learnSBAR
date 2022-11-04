@@ -12,6 +12,7 @@ import Submission from "./components/Submission";
 import Scenario from "./components/Scenario";
 import NewAttempt from "./components/NewAttempt";
 import RepeatTest from "./components/RepeatTest";
+import Attempt from "./components/Attempt";
 
 const ROLES = {
   User: 2001,
@@ -33,9 +34,13 @@ function App() {
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
             <Route path="scenario/:scenarioId" element={<Scenario />} />
-            <Route path="scenario/repeat/:scenarioId" element={<RepeatTest />} />
+            <Route
+              path="scenario/repeat/:scenarioId"
+              element={<RepeatTest />}
+            />
             <Route path="newattempt/:scenarioId" element={<NewAttempt />} />
             <Route path="submission" element={<Submission />} />
+            <Route path="submission/:attempt" element={<Attempt />} />
             <Route path="/" element={<Scenarios />} />
           </Route>
 
