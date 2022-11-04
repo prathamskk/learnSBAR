@@ -1,0 +1,122 @@
+.scenario_submission {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.attempt_responses {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  max-width: 500px;
+}
+
+.scenario {
+  padding: 45px;
+  text-transform: capitalize;
+  background-color: #3f3939;
+  border-radius: 8px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+#scenarioNo {
+  color: #ffff;
+}
+
+.scenario-desc {
+  color: #c5c5c5;
+}
+
+#attemptNo {
+  text-transform: capitalize;
+  padding: 10px;
+  border-radius: 8px;
+  color: #fff;
+  background-color: #282828;
+}
+
+.recordings {
+  padding: 30px;
+  border-radius: 8px;
+  background-color: #fff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.before_rec,
+.after_rec {
+  text-align: center;
+  font-weight: 400;
+}
+
+.after,
+.before {
+  background-color: #6777f8;
+  color: #fff;
+  gap: 10px;
+  padding: 15px;
+  display: flex;
+  width: 50rem;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+audio {
+  width: 300px;
+}
+
+.accordion {
+  background-color: #fff;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  border-radius: 8px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.accordion:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+.self_reflective {
+  margin-bottom: 20px;
+}
+
+.ass_responses {
+  display: flex;
+}
+
+@media screen and (max-width: 600px) {
+  .attempt_responses {
+    max-width: 325px;
+  }
+
+  .after,
+  .before {
+    display: flex;
+    flex-direction: column;
+  }
+}
