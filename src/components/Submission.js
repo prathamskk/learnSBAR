@@ -44,25 +44,23 @@ const Submission = () => {
                                 ></source>
                               </audio>
                             </div>
-                            <div className="view_more">
-                              <Link
-                                to={"/submission/" + attempt}
-                                state={{
-                                  scenarioNo: keyName,
-                                  attempt: attempt,
-                                  recording: {
-                                    rec1: scenarios[keyName][attempt]["rec1"],
-                                    rec2: scenarios[keyName][attempt]["rec2"],
-                                  },
-                                  assessment: {
-                                    ass1: scenarios[keyName][attempt]["ass1"],
-                                    ass2: scenarios[keyName][attempt]["ass2"],
-                                  },
-                                }}
-                              >
-                                View more
-                              </Link>
-                            </div>
+                            <Link
+                              to={"/submission/" + attempt}
+                              state={{
+                                scenarioNo: keyName,
+                                attempt: attempt,
+                                recording: {
+                                  rec1: scenarios[keyName][attempt]["rec1"],
+                                  rec2: scenarios[keyName][attempt]["rec2"],
+                                },
+                                assessment: {
+                                  ass1: scenarios[keyName][attempt]["ass1"],
+                                  ass2: scenarios[keyName][attempt]["ass2"],
+                                },
+                              }}
+                            >
+                              <div className="view_more">View more</div>
+                            </Link>
                           </div>
                         ) : (
                           ""
